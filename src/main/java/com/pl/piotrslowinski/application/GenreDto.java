@@ -1,0 +1,31 @@
+package com.pl.piotrslowinski.application;
+
+/**
+ * Created by user on 07.01.2018.
+ */
+public class GenreDto {
+
+    private Integer id;
+    private String name;
+
+    public GenreDto(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
