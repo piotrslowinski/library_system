@@ -65,6 +65,13 @@ public class BookController {
         return bookFinder.getBookDetails(bookId);
     }
 
+    @DeleteMapping("books/{bookId}/specimens")
+    public DetailedBookDto removeSpecimen(@PathVariable Integer bookId, @RequestBody DeleteSpecimenCommand cmd){
+        cmd.setBookId(bookId);
+        gateway.execute(cmd);
+        return bookFinder.getBookDetails(bookId);
+    }
+
     @PutMapping("books/{bookId}/authors")
     public DetailedBookDto assignToAuthor(@PathVariable Integer bookId, @RequestBody AssignAuthorCommand cmd){
         cmd.setBookId(bookId);

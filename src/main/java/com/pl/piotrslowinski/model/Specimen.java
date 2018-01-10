@@ -21,7 +21,7 @@ public class Specimen {
 
     private String code;
 
-    @OneToMany(mappedBy = "specimen")
+    @OneToMany(mappedBy = "specimen", cascade = CascadeType.ALL)
     private Collection<Lending> lendings = new LinkedList<>();
 
     public Specimen(String code) {

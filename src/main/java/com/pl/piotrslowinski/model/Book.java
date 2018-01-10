@@ -149,4 +149,7 @@ public class Book {
         return false;
     }
 
+    public void remove(Specimen specimen) {
+        specimens.remove(specimen);
+    }
 }

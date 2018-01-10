@@ -85,4 +85,20 @@ public class BookTest {
         assertEquals(2,b1.getSpecimens().size());
     }
 
+    @Test
+    public void shouldRemoveSpecimen(){
+       //given
+        Specimen s1 = new Specimen("1");
+        b1.addSpecimen(s1);
+        b1.addSpecimen(s1);
+        b1.addSpecimen(new Specimen("2"));
+
+        //when
+        b1.remove(s1);
+
+        //then
+        assertEquals(Arrays.asList("2"),b1.getSpecimens().stream().map(Specimen::getCode).collect(Collectors.toList()));
+        assertEquals(1,b1.getSpecimens().size());
+    }
+
 }

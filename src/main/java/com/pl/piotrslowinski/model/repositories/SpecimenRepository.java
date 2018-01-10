@@ -11,4 +11,6 @@ public interface SpecimenRepository {
 
     Specimen get(String code);
 
+    void remove(String code);
+
 }

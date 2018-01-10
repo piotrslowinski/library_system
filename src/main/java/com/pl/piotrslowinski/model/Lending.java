@@ -98,7 +98,7 @@ public class Lending {
     }
 
     public boolean isCurrent() {
-        return returnDate.isAfter(timeProvider.today());
+        return returnDate.isAfter(LocalDate.now());
     }
 
     public void terminate() {

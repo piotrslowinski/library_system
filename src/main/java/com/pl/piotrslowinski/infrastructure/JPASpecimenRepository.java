@@ -29,4 +29,12 @@ public class JPASpecimenRepository implements SpecimenRepository {
                 .getSingleResult();
         return specimen;
     }
+
+    @Override
+    public void remove(String code) {
+        Specimen specimen = (Specimen) entityManager.createQuery("FROM Specimen s WHERE s.code = :code")
+                .setParameter("code", code)
+                .getSingleResult();
+        entityManager.remove(specimen);
+    }
 }
