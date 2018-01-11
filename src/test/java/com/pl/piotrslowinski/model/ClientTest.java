@@ -51,28 +51,28 @@ public class ClientTest {
         assertEquals(1, client.getCurrentLendings().size());
     }
 
-    @Test
-    public void shouldReturnBooks(){
-        //given
-        Specimen s1 = new Specimen("a");
-        Specimen s2 = new Specimen("b");
-        book.addSpecimen(s1);
-        book.addSpecimen(s2);
-
-        Lending l = new Lending(client, s1, timeMachine);
-        Lending l2 = new Lending(client, s2, timeMachine);
-        client.borrowBook(l);
-        client.borrowBook(l2);
-
-        //when
-        client.returnBook(s1);
-        client.returnBook(s1);
-
-
-        //then
-        assertEquals(1, client.getCurrentLendings().size());
-
-    }
+//    @Test
+//    public void shouldReturnBooks(){
+//        //given
+//        Specimen s1 = new Specimen("a");
+//        Specimen s2 = new Specimen("b");
+//        book.addSpecimen(s1);
+//        book.addSpecimen(s2);
+//
+//        Lending l = new Lending(client, s1, timeMachine);
+//        Lending l2 = new Lending(client, s2, timeMachine);
+//        client.borrowBook(l);
+//        client.borrowBook(l2);
+//
+//        //when
+//        client.returnBook(s1);
+//        client.returnBook(s1);
+//
+//
+//        //then
+//        assertEquals(1, client.getCurrentLendings().size());
+//
+//    }
 
     @Test
     public void shouldKeepLendingsHistory(){

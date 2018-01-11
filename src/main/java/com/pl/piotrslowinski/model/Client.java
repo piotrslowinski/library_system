@@ -145,8 +145,9 @@ public class Client {
         return lendings.stream().filter(Lending::isCurrent).collect(Collectors.toList());
     }
 
-    public void returnBook(Specimen specimen) {
-        lendings.stream().filter((lending) -> lending.isBorrowed(specimen)).findFirst().ifPresent(Lending::terminate);
+    public void returnBook(Lending lending) {
+//        lendings.stream().filter((lending) -> lending.isBorrowed(specimen)).findFirst().ifPresent(Lending::terminate);
+        lendings.stream().filter((specimen) -> lending.isCurrent()).findFirst().ifPresent(Lending::terminate);
     }
 
     public Collection<Specimen> getCurrentSpecimens() {

@@ -86,5 +86,12 @@ public class BookController {
         return clientFinder.get(clientId);
     }
 
+    @DeleteMapping("/clients/{clientId}/lendings")
+    public ClientDto returnBook(@PathVariable Integer clientId, @RequestBody ReturnSpecimenCommand cmd){
+        cmd.setClientId(clientId);
+        gateway.execute(cmd);
+        return clientFinder.get(clientId);
+    }
+
 
 }

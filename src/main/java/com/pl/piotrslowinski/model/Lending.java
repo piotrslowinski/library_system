@@ -102,7 +102,7 @@ public class Lending {
     }
 
     public void terminate() {
-        returnDate = timeProvider.today();
+        returnDate = LocalDate.now();
     }
 
     public String getSpecimensTitle() {

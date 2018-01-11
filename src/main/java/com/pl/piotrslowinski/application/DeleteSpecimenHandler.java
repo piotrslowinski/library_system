@@ -16,21 +16,19 @@ import org.springframework.transaction.annotation.Transactional;
 public class DeleteSpecimenHandler implements Handler<DeleteSpecimenCommand> {
 
     private SpecimenRepository specimenRepository;
-    private BookRepository bookRepository;
 
-    public DeleteSpecimenHandler(SpecimenRepository specimenRepository, BookRepository bookRepository) {
+    public DeleteSpecimenHandler(SpecimenRepository specimenRepository) {
         this.specimenRepository = specimenRepository;
-        this.bookRepository = bookRepository;
     }
 
     @Transactional
     @Override
     public void handle(DeleteSpecimenCommand cmd) {
         Specimen specimen = specimenRepository.get(cmd.getCode());
-        Book book = bookRepository.get(cmd.getBookId());
+//        Book book = bookRepository.get(cmd.getBookId());
+        Book book = specimen.getBook();
         book.remove(specimen);
         specimenRepository.remove(cmd.getCode());
-        bookRepository.save(book);
     }
 
     @Override
