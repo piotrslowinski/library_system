@@ -23,13 +23,14 @@ Used technologies:
 		}
 
 
-		2.Add new genre.
+	2.Add new genre.
 
 		PUT/genres
 		{
 			"name": "fiction",
 		}
-	++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	
+	
 	
 	3.Create new book.
 	
@@ -73,6 +74,7 @@ Used technologies:
 				"qwerty"
 			]
 		}
+
 	
 	5.Register new library client.
 	
