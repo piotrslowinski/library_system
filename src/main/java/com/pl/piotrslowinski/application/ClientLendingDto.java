@@ -4,9 +4,7 @@ import com.pl.piotrslowinski.model.Lending;
 
 import java.time.LocalDate;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 public class ClientLendingDto {
 
     private LocalDate lendingDate, returnDate;

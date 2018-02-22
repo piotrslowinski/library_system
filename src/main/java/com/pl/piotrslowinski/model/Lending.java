@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Entity
 @Table(name = "lendings")
 public class Lending {

@@ -3,9 +3,7 @@ package com.pl.piotrslowinski.model.commands;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 public class ValidationErrors {
 
     private Map<String, String> errors = new HashMap<>();

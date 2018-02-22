@@ -9,9 +9,7 @@ import com.pl.piotrslowinski.model.repositories.SpecimenRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Component
 public class AddNewSpecimenHandler implements Handler<AddNewSpecimenCommand> {
 

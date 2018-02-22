@@ -9,9 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Component
 public class JPAClientFinder implements ClientFinder {
 

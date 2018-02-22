@@ -2,9 +2,7 @@ package com.pl.piotrslowinski.model.commands;
 
 import java.time.LocalDate;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 public class CreateBookCommand implements Command {
 
     private String title;

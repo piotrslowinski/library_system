@@ -8,9 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Component
 public class JPAGenreFinder implements GenreFinder {
 
@@ -35,7 +33,7 @@ public class JPAGenreFinder implements GenreFinder {
     @Override
     public List<GenreDto> getAll() {
         List<GenreDto> results = entityManager.createQuery("SELECT NEW" +
-                " pl.com.piotrslowinski.application.GenreDto(g.id, g.name) FROM Genre g").getResultList();
+                " com.pl.piotrslowinski.application.GenreDto(g.id, g.name) FROM Genre g").getResultList();
         return results;
     }
 }

@@ -21,9 +21,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class CreateBookTest extends AcceptanceTest {

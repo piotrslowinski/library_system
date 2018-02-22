@@ -2,9 +2,7 @@ package com.pl.piotrslowinski.model.commands;
 
 import org.springframework.stereotype.Component;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Component
 public class AddGenreCommand implements Command {
 

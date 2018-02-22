@@ -9,9 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 public class DetailedBookDto extends BookDto {
 
 

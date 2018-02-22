@@ -8,9 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 
-/**
- * Created by user on 08.01.2018.
- */
+
 @Component
 public class JPALendingRepository implements LendingRepository {
 

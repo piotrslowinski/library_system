@@ -7,9 +7,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 public class AcceptanceTest {
 
     @PersistenceContext

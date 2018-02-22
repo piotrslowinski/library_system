@@ -6,9 +6,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.text.SimpleDateFormat;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Configuration
 public class LibrarySystemConfiguration {
 

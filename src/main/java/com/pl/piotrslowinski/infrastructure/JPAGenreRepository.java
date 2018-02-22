@@ -8,9 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Component
 public class JPAGenreRepository implements GenreRepository {
 
@@ -23,8 +21,6 @@ public class JPAGenreRepository implements GenreRepository {
 
     @Override
     public Genre get(Integer id) {
-//        Genre genre = (Genre)entityManager.createQuery("FROM Genre g WHERE g.id = :id").
-//                setParameter("id",id).getSingleResult();
         Genre genre = entityManager.find(Genre.class, id);
         if(genre == null)
             throw new NoSuchEntityException();

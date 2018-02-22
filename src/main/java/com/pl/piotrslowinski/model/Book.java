@@ -5,9 +5,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedList;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Entity
 @Table(name = "books")
 public class Book {

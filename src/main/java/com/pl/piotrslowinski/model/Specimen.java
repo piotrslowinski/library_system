@@ -4,9 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.LinkedList;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Entity
 @Table(name = "specimens")
 public class Specimen {

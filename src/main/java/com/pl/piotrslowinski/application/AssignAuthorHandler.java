@@ -8,9 +8,7 @@ import com.pl.piotrslowinski.model.repositories.BookRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Created by user on 08.01.2018.
- */
+
 @Component
 public class AssignAuthorHandler implements Handler<AssignAuthorCommand>{
 

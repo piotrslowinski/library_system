@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by user on 08.01.2018.
- */
+
 @RestController
 @RequestMapping("/genres")
 public class GenreController {

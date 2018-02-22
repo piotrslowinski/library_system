@@ -1,8 +1,6 @@
 package com.pl.piotrslowinski.model.commands;
 
-/**
- * Created by user on 10.01.2018.
- */
+
 public class DeleteSpecimenCommand implements Command {
 
     private Integer bookId;

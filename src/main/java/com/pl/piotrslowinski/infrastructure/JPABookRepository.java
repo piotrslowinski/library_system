@@ -7,9 +7,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.EntityManager;
 import java.util.NoSuchElementException;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Component
 public class JPABookRepository implements BookRepository {
 

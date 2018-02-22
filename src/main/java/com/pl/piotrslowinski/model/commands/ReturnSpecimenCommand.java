@@ -1,8 +1,6 @@
 package com.pl.piotrslowinski.model.commands;
 
-/**
- * Created by user on 11.01.2018.
- */
+
 public class ReturnSpecimenCommand implements Command {
 
     private Integer clientId;

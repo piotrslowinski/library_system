@@ -11,9 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Component
 public class JPABookFinder implements BookFinder {
 

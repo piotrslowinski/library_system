@@ -8,9 +8,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Entity
 @Table(name = "clients")
 public class Client {
@@ -146,7 +144,6 @@ public class Client {
     }
 
     public void returnBook(Lending lending) {
-//        lendings.stream().filter((lending) -> lending.isBorrowed(specimen)).findFirst().ifPresent(Lending::terminate);
         lendings.stream().filter((specimen) -> lending.isCurrent()).findFirst().ifPresent(Lending::terminate);
     }
 

@@ -3,9 +3,7 @@ package com.pl.piotrslowinski.model;
 import javax.persistence.*;
 import java.util.Collection;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Entity
 @Table(name = "genres")
 public class Genre {

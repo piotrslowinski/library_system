@@ -2,9 +2,7 @@ package com.pl.piotrslowinski.model;
 
 import javax.persistence.*;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Entity
 @Table(name = "authors")
 public class Author {

@@ -5,9 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.*;
 
-/**
- * Created by user on 07.01.2018.
- */
+
 @Component
 @Primary
 public class TimeMachine implements TimeProvider {

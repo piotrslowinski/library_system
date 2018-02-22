@@ -6,9 +6,7 @@ import com.pl.piotrslowinski.application.CommandGateway;
 import com.pl.piotrslowinski.model.commands.RegisterClientCommand;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * Created by user on 08.01.2018.
- */
+
 @RestController
 @RequestMapping("/clients")
 public class ClientController {
