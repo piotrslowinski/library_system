@@ -3,10 +3,11 @@ package pl.com.piotrslowinski.ui.rest;
 import pl.com.piotrslowinski.application.ClientDto;
 import pl.com.piotrslowinski.application.ClientFinder;
 import pl.com.piotrslowinski.application.CommandGateway;
+import pl.com.piotrslowinski.infrastructure.Secured;
 import pl.com.piotrslowinski.model.commands.RegisterClientCommand;
 import org.springframework.web.bind.annotation.*;
 
-
+@Secured
 @RestController
 @RequestMapping("/clients")
 public class ClientController {

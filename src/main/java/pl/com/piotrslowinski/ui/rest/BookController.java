@@ -1,5 +1,6 @@
 package pl.com.piotrslowinski.ui.rest;
 
+import pl.com.piotrslowinski.infrastructure.Secured;
 import pl.com.piotrslowinski.model.repositories.BookRepository;
 import org.springframework.web.bind.annotation.*;
 import pl.com.piotrslowinski.application.*;
@@ -46,6 +47,7 @@ public class BookController {
         return bookFinder.getBookDetails(id);
     }
 
+    @Secured
     @PutMapping("/books")
     public void addNew(@RequestBody CreateBookCommand cmd){
         gateway.execute(cmd);
@@ -56,6 +58,7 @@ public class BookController {
         return bookFinder.getAll();
     }
 
+    @Secured
     @PostMapping("/books/{bookId}/specimens")
     public DetailedBookDto addSpecimen(@PathVariable Integer bookId, @RequestBody AddNewSpecimenCommand cmd){
         cmd.setBookId(bookId);
@@ -63,6 +66,7 @@ public class BookController {
         return bookFinder.getBookDetails(bookId);
     }
 
+    @Secured
     @DeleteMapping("books/{bookId}/specimens")
     public DetailedBookDto removeSpecimen(@PathVariable Integer bookId, @RequestBody DeleteSpecimenCommand cmd){
         cmd.setBookId(bookId);
@@ -70,6 +74,7 @@ public class BookController {
         return bookFinder.getBookDetails(bookId);
     }
 
+    @Secured
     @PutMapping("books/{bookId}/authors")
     public DetailedBookDto assignToAuthor(@PathVariable Integer bookId, @RequestBody AssignAuthorCommand cmd){
         cmd.setBookId(bookId);
@@ -77,6 +82,7 @@ public class BookController {
         return bookFinder.getBookDetails(bookId);
     }
 
+    @Secured
     @PutMapping("/clients/{clientId}/lendings")
     public ClientDto lendBook(@PathVariable Integer clientId, @RequestBody LendSpecimenCommand cmd){
         cmd.setClientId(clientId);
@@ -84,6 +90,7 @@ public class BookController {
         return clientFinder.get(clientId);
     }
 
+    @Secured
     @DeleteMapping("/clients/{clientId}/lendings")
     public ClientDto returnBook(@PathVariable Integer clientId, @RequestBody ReturnSpecimenCommand cmd){
         cmd.setClientId(clientId);

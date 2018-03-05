@@ -3,6 +3,7 @@ package pl.com.piotrslowinski.ui.rest;
 import pl.com.piotrslowinski.application.CommandGateway;
 import pl.com.piotrslowinski.application.GenreDto;
 import pl.com.piotrslowinski.application.GenreFinder;
+import pl.com.piotrslowinski.infrastructure.Secured;
 import pl.com.piotrslowinski.model.Genre;
 import pl.com.piotrslowinski.model.commands.AddGenreCommand;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +34,7 @@ public class GenreController {
         return genreFinder.get(genreId);
     }
 
+    @Secured
     @PutMapping
     public void addGenre(@RequestBody AddGenreCommand cmd){
         commandGateway.execute(cmd);
