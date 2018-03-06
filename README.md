@@ -1,4 +1,4 @@
-#Library System
+# Library System
 ---
 Used technologies:
 
@@ -11,7 +11,7 @@ Used technologies:
 
 ---
 
-##1.REST endpoints
+## 1. REST endpoints
 
 
 1. Add new author.
