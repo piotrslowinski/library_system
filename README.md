@@ -15,8 +15,9 @@ Used technologies:
 
 
 1. Add new author.
-...
+
 		PUT/authors
+...
 		{
 			"firstName": "Frederick",
 			"lastName": "Forsyth"
