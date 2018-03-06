@@ -30,24 +30,22 @@ Used technologies:
 
 2. Add new genre.
 
-...
-
-*PUT/genres*
-...
-
+	*PUT/genres*
 
 ...
+
 		{
 			"name": "fiction",
 		}
+		
 ...
 	
 3. Create new book.
-...
 	
-		*PUT/books*
+	*PUT/books*
+
 ...
-...
+
 		{
 			"title": "Java",
 			"isbn": "abc123",
@@ -56,22 +54,26 @@ Used technologies:
 			"authorId": 1
 
 		}
+		
 ...
 	
 	
 4.Add new specimen to existing book.
-...
+
 	
-		*POST/books/:bookId/specimens*
+	*POST/books/:bookId/specimens*
+
 ...
-...
+
 		{
 			"code": "qwerty"
 		}
 ...
 
 		-example respone:
+		
 ...
+
 		{
 			"id": 1,
 			"title": "Java",
@@ -92,13 +94,15 @@ Used technologies:
 				"qwerty"
 			]
 		}
+		
 ...
-
 	
 5.Register new library client.
 	
-		PUT/clients
+		*PUT/clients*
+		
 ...
+
 		{
 			"firstName": "John",
 			"lastName": "Doe",
@@ -108,21 +112,25 @@ Used technologies:
 			"city": "London"
 
 		}
+		
 ...
 	
 6.Lend specimen of book to conrete client.
 	
-		PUT/clients/:clientId/lendings
+		*PUT/clients/:clientId/lendings*
 ...
+
 		{
 			"code": "ccc"
 
 		}
+		
 ...
 
 		-example respone:
 
 ...
+
 		{
 			"firstName": "Jan",
 			"lastName": "Kowalski",
@@ -164,13 +172,16 @@ Used technologies:
 				"Dziady"
 			]
 		}
+		
 ...
 	
 7. Search for all books.
 	
-		GET/books
+		*GET/books*
 		-example respone:
+		
 ...
+
 		[
 			{
 				"id": 1,
@@ -183,13 +194,15 @@ Used technologies:
 				"isbn": "chud7ge72"
 			}
 		]
+		
 ...
 
 8. Search for specified book.
 	
-		GET/books/:bookId
+		*GET/books/:bookId*
 		-example respone:
 ...
+
 		{
 	    	"id": 1,
 	    	"title": "Java",
@@ -216,16 +229,18 @@ Used technologies:
 		"B123",
 		"C123"
 	    ]
+		
 ...
 	
 
 9. Search for specified client and his lending history.
 	
-		GET/clients/:clientId
+		*GET/clients/:clientId*
 
 		- example response:
 
 ...
+
 		{
 			"firstName": "Jan",
 			"lastName": "Kowalski",
@@ -268,22 +283,26 @@ Used technologies:
 			"Kordian"
 			]
 		}
+		
 ...
 
 10.Return specimen to library.
 	
-		DELETE/clients/:clientId/lendings
+		*DELETE/clients/:clientId/lendings*
 
 ...
+
 		{
 			"code": "A123"
 
 		}
+		
 ...
 
 		- example respone:
 
 ...
+
 		{
 			"firstName": "Jan",
 			"lastName": "Kowalski",
@@ -329,17 +348,20 @@ Used technologies:
 	
 11.Remove specimen from library stock.
 	
-		DELETE/books/:bookId/specimens
+		*DELETE/books/:bookId/specimens*
 
 ...
+
 		{
 			"code": "ccc"
 		}
+		
 ...
 
 		- example response:
 
 ...
+
 		{
 			"id": 1,
 			"title": "Dziady",
@@ -366,13 +388,15 @@ Used technologies:
 				"B123"
 			]
 		}
+		
 ...
 	
 12.Get genre list.
 	
-		GET/genres
+		*GET/genres*
 
 		- example response:
+		
 ...
 
 		[
@@ -389,15 +413,17 @@ Used technologies:
 		"name": "criminal"
 			}
 		]
+		
 ...
 
 13.Get authors list.
 	
-		GET/authors
+		*GET/authors*
 
 		- example response:
 
 ...
+
 		[
 			{
 				"id": 1,
@@ -415,16 +441,19 @@ Used technologies:
 				"lastName": "Forsyth"
 			}
 		]
+		
 ...
 	
 14. Assign author to existing book.
 	
-		PUT/books/:booksId/authors
+		*PUT/books/:booksId/authors*
 
 ...
+
 		{
 			"authorId": 1
 		}
+		
 ...
 
 	
