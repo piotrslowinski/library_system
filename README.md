@@ -16,15 +16,18 @@ Used technologies:
 
 1. Add new author.
 
-	...
+...
 
 	*PUT/authors*
+...
+...
+	
 
 		{
 			"firstName": "Frederick",
 			"lastName": "Forsyth"
 		}
-	...
+...
 	
 2. Add new genre.
 
