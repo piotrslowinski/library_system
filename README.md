@@ -27,7 +27,7 @@ Used technologies:
 			"firstName": "Frederick",
 			"lastName": "Forsyth"
 		}
-...
+
 	
 2. Add new genre.
 
