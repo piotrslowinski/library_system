@@ -16,24 +16,24 @@ Used technologies:
 
 1. Add new author.
 
-...
+	...
 
-PUT/authors
+	*PUT/authors*
 
 		{
 			"firstName": "Frederick",
 			"lastName": "Forsyth"
 		}
-...
+	...
 	
 2. Add new genre.
 
-		PUT/genres
-...
+*PUT/genres*
+	...
 		{
 			"name": "fiction",
 		}
-...
+	...
 	
 3. Create new book.
 	
