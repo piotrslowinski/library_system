@@ -26,7 +26,7 @@ PUT/authors
 
 ...
 	
-2.Add new genre.
+2. Add new genre.
 
 		PUT/genres
 ...
@@ -35,7 +35,7 @@ PUT/authors
 		}
 ...
 	
-3.Create new book.
+3. Create new book.
 	
 		PUT/books
 ...
