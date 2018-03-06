@@ -15,28 +15,28 @@ Used technologies:
 
 
 	1. Add new author.
-	...
+...
 		PUT/authors
 		{
 			"firstName": "Frederick",
 			"lastName": "Forsyth"
 		}
 
-	...
+...
 	
 	2.Add new genre.
 
 		PUT/genres
-		...
+...
 		{
 			"name": "fiction",
 		}
-		...
+...
 	
 	3.Create new book.
 	
 		PUT/books
-		...
+...
 		{
 			"title": "Java",
 			"isbn": "abc123",
@@ -45,20 +45,20 @@ Used technologies:
 			"authorId": 1
 
 		}
-		...
+...
 	
 	
 	4.Add new specimen to existing book.
 	
 		POST/books/:bookId/specimens
-		...
+...
 		{
 			"code": "qwerty"
 		}
-		...
+...
 
 		-example respone:
-		...
+...
 		{
 			"id": 1,
 			"title": "Java",
@@ -79,7 +79,7 @@ Used technologies:
 				"qwerty"
 			]
 		}
-		...
+...
 
 	
 	5.Register new library client.
