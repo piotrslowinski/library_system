@@ -58,7 +58,7 @@ Used technologies:
 ...
 	
 	
-4.Add new specimen to existing book.
+4. Add new specimen to existing book.
 
 	
 	*POST/books/:bookId/specimens*
@@ -97,9 +97,9 @@ Used technologies:
 		
 ...
 	
-5.Register new library client.
+5. Register new library client.
 	
-		*PUT/clients*
+	*PUT/clients*
 		
 ...
 
@@ -115,9 +115,9 @@ Used technologies:
 		
 ...
 	
-6.Lend specimen of book to conrete client.
+6. Lend specimen of book to conrete client.
 	
-		*PUT/clients/:clientId/lendings*
+	*PUT/clients/:clientId/lendings*
 ...
 
 		{
@@ -177,8 +177,8 @@ Used technologies:
 	
 7. Search for all books.
 	
-		*GET/books*
-		-example respone:
+	*GET/books*
+	-example respone:
 		
 ...
 
@@ -199,7 +199,7 @@ Used technologies:
 
 8. Search for specified book.
 	
-		*GET/books/:bookId*
+	*GET/books/:bookId*
 		-example respone:
 ...
 
@@ -235,7 +235,7 @@ Used technologies:
 
 9. Search for specified client and his lending history.
 	
-		*GET/clients/:clientId*
+	*GET/clients/:clientId*
 
 		- example response:
 
@@ -286,9 +286,9 @@ Used technologies:
 		
 ...
 
-10.Return specimen to library.
+10. Return specimen to library.
 	
-		*DELETE/clients/:clientId/lendings*
+	*DELETE/clients/:clientId/lendings*
 
 ...
 
@@ -346,9 +346,9 @@ Used technologies:
 		}
 ...
 	
-11.Remove specimen from library stock.
+11. Remove specimen from library stock.
 	
-		*DELETE/books/:bookId/specimens*
+	*DELETE/books/:bookId/specimens*
 
 ...
 
@@ -391,9 +391,9 @@ Used technologies:
 		
 ...
 	
-12.Get genre list.
+12. Get genre list.
 	
-		*GET/genres*
+	*GET/genres*
 
 		- example response:
 		
@@ -416,9 +416,9 @@ Used technologies:
 		
 ...
 
-13.Get authors list.
+13. Get authors list.
 	
-		*GET/authors*
+	*GET/authors*
 
 		- example response:
 
@@ -446,7 +446,7 @@ Used technologies:
 	
 14. Assign author to existing book.
 	
-		*PUT/books/:booksId/authors*
+	*PUT/books/:booksId/authors*
 
 ...
 
