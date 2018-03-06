@@ -29,15 +29,16 @@ Used technologies:
 2. Add new genre.
 
 *PUT/genres*
-	...
+
+...
 		{
 			"name": "fiction",
 		}
-	...
+...
 	
 3. Create new book.
 	
-		PUT/books
+		*PUT/books*
 ...
 		{
 			"title": "Java",
@@ -52,7 +53,7 @@ Used technologies:
 	
 4.Add new specimen to existing book.
 	
-		POST/books/:bookId/specimens
+		*POST/books/:bookId/specimens*
 ...
 		{
 			"code": "qwerty"
