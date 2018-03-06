@@ -118,6 +118,7 @@ Used technologies:
 6. Lend specimen of book to conrete client.
 	
 	*PUT/clients/:clientId/lendings*
+	
 ...
 
 		{
@@ -127,7 +128,7 @@ Used technologies:
 		
 ...
 
-		-example respone:
+	-example respone:
 
 ...
 
@@ -178,6 +179,7 @@ Used technologies:
 7. Search for all books.
 	
 	*GET/books*
+	
 	-example respone:
 		
 ...
@@ -200,7 +202,9 @@ Used technologies:
 8. Search for specified book.
 	
 	*GET/books/:bookId*
-		-example respone:
+	
+	-example respone:
+	
 ...
 
 		{
@@ -237,7 +241,7 @@ Used technologies:
 	
 	*GET/clients/:clientId*
 
-		- example response:
+	- example response:
 
 ...
 
@@ -395,7 +399,7 @@ Used technologies:
 	
 	*GET/genres*
 
-		- example response:
+	- example response:
 		
 ...
 
@@ -420,7 +424,7 @@ Used technologies:
 	
 	*GET/authors*
 
-		- example response:
+	- example response:
 
 ...
 
