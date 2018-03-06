@@ -32,8 +32,10 @@ Used technologies:
 2. Add new genre.
 
 ...
+
 *PUT/genres*
 ...
+
 
 ...
 		{
