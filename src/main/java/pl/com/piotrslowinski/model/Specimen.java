@@ -13,8 +13,7 @@ public class Specimen {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne//(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-   // @JoinColumn(name = "book_id")
+    @ManyToOne
     private Book book;
 
     private String code;
@@ -56,14 +55,6 @@ public class Specimen {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public Collection<Lending> getLendings() {
-        return lendings;
-    }
-
-    public void setLendings(Collection<Lending> lendings) {
-        this.lendings = lendings;
     }
 
     public String getSpecimensTitle(){

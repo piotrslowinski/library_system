@@ -15,13 +15,13 @@ public class SecurityAspect {
         this.currentUser = currentUser;
     }
 
-    @Before("@within(secured")
+    @Before("@within(secured)")
     public void checkSecurity(Secured secured){
         if(!currentUser.isAuthenticated(secured.roles()))
             throw new SecurityException();
     }
 
-    @Before("@annotation(secured")
+    @Before("@annotation(secured)")
     public void checkMethodSecurity(Secured secured){
         checkSecurity(secured);
     }

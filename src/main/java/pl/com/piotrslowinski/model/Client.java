@@ -58,15 +58,6 @@ public class Client {
     public Client() {
     }
 
-    public TimeProvider getTimeProvider() {
-        return timeProvider;
-    }
-
-    @Autowired
-    public void setTimeProvider(TimeProvider timeProvider) {
-        this.timeProvider = timeProvider;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -79,48 +70,24 @@ public class Client {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getDocumentNumber() {
         return documentNumber;
     }
 
-    public void setDocumentNumber(String documentNumber) {
-        this.documentNumber = documentNumber;
-    }
-
     public String getPesel() {
         return pesel;
-    }
-
-    public void setPesel(String pesel) {
-        this.pesel = pesel;
     }
 
     public Address getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
     public Collection<Lending> getLendings() {
         return lendings;
-    }
-
-    public void setLendings(Collection<Lending> lendings) {
-        this.lendings = lendings;
     }
 
     public void changeProfile(String lastName, String documentNumber, String street, String city) {

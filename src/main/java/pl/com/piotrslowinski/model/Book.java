@@ -54,12 +54,6 @@ public class Book {
         this.publishedAt = publishedAt;
     }
 
-    public void updateBook(String title, String isbn, LocalDate publishedAt){
-        this.title = title;
-        this.isbn = isbn;
-        this.publishedAt = publishedAt;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -72,24 +66,12 @@ public class Book {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
     public LocalDate getPublishedAt() {
         return publishedAt;
-    }
-
-    public void setPublishedAt(LocalDate publishedAt) {
-        this.publishedAt = publishedAt;
     }
 
     public Genre getGenre() {
@@ -104,16 +86,8 @@ public class Book {
         return authors;
     }
 
-    public void setAuthors(Collection<Author> authors) {
-        this.authors = authors;
-    }
-
     public Collection<Specimen> getSpecimens() {
         return specimens;
-    }
-
-    public void setSpecimens(Collection<Specimen> specimens) {
-        this.specimens = specimens;
     }
 
     public void assignGenre(Genre genre) {

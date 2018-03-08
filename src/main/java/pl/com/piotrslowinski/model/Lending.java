@@ -41,15 +41,6 @@ public class Lending {
     public Lending() {
     }
 
-    public TimeProvider getTimeProvider() {
-        return timeProvider;
-    }
-
-    @Autowired
-    public void setTimeProvider(TimeProvider timeProvider) {
-        this.timeProvider = timeProvider;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -78,20 +69,8 @@ public class Lending {
         return lendingDate;
     }
 
-    public void setLendingDate(LocalDate lendingDate) {
-        this.lendingDate = lendingDate;
-    }
-
     public LocalDate getReturnDate() {
         return returnDate;
-    }
-
-    public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
-    }
-
-    public boolean isBorrowed(Specimen specimen) {
-        return isCurrent() && specimen.equals(this.specimen);
     }
 
     public boolean isCurrent() {
@@ -102,7 +81,4 @@ public class Lending {
         returnDate = LocalDate.now();
     }
 
-    public String getSpecimensTitle() {
-        return getSpecimen().getBook().getTitle();
-    }
 }
