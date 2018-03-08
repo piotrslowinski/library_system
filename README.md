@@ -70,7 +70,7 @@ Used technologies:
 		}
 ...
 
-		-example respone:
+	- example respone:
 		
 ...
 
@@ -128,7 +128,7 @@ Used technologies:
 		
 ...
 
-	-example respone:
+	- example respone:
 
 ...
 
@@ -180,7 +180,7 @@ Used technologies:
 	
 	*GET/books*
 	
-	-example respone:
+	- example respone:
 		
 ...
 
@@ -203,7 +203,7 @@ Used technologies:
 	
 	*GET/books/:bookId*
 	
-	-example respone:
+	- example respone:
 	
 ...
 
@@ -303,7 +303,7 @@ Used technologies:
 		
 ...
 
-		- example respone:
+	- example respone:
 
 ...
 
@@ -362,7 +362,7 @@ Used technologies:
 		
 ...
 
-		- example response:
+	- example response:
 
 ...
 
@@ -459,6 +459,10 @@ Used technologies:
 		}
 		
 ...
+
+## 2. Login feature
+
+Controller allows to register new user by admin, login with password, operate on books after authentication.
 
 	
 	

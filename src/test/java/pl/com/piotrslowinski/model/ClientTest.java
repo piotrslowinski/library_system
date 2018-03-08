@@ -48,28 +48,28 @@ public class ClientTest {
         assertEquals(1, client.getCurrentLendings().size());
     }
 
-//    @Test
-//    public void shouldReturnBooks(){
-//        //given
-//        Specimen s1 = new Specimen("a");
-//        Specimen s2 = new Specimen("b");
-//        book.addSpecimen(s1);
-//        book.addSpecimen(s2);
-//
-//        Lending l = new Lending(client, s1, timeMachine);
-//        Lending l2 = new Lending(client, s2, timeMachine);
-//        client.borrowBook(l);
-//        client.borrowBook(l2);
-//
-//        //when
-//        client.returnBook(s1);
-//        client.returnBook(s1);
-//
-//
-//        //then
-//        assertEquals(1, client.getCurrentLendings().size());
-//
-//    }
+    @Test
+    public void shouldReturnBooks(){
+        //given
+        Specimen s1 = new Specimen("a");
+        Specimen s2 = new Specimen("b");
+        book.addSpecimen(s1);
+        book.addSpecimen(s2);
+
+        Lending l = new Lending(client, s1, timeMachine);
+        Lending l2 = new Lending(client, s2, timeMachine);
+        client.borrowBook(l);
+        client.borrowBook(l2);
+
+        //when
+        client.returnBook(l);
+        client.returnBook(l);
+
+
+        //then
+        assertEquals(1, client.getCurrentLendings().size());
+
+    }
 
     @Test
     public void shouldKeepLendingsHistory(){
@@ -105,15 +105,5 @@ public class ClientTest {
         assertEquals(Arrays.asList(TimeProvider.MAX_DATE,TimeProvider.MAX_DATE,TimeProvider.MAX_DATE), history.stream()
                 .map(Lending::getReturnDate).collect(Collectors.toList()));
     }
-//
-//    public Specimen extractSpecimen(String code){
-//        Specimen s1= null;
-//        for (Specimen s: book.getSpecimens()){
-//            if(s.getCode().equals(code)){
-//                s1 = s;
-//            }
-//
-//        }
-//        return s1;
-//    }
+
 }
