@@ -1,5 +1,6 @@
 package pl.com.piotrslowinski.acceptance;
 
+import org.springframework.transaction.annotation.Transactional;
 import pl.com.piotrslowinski.application.*;
 import pl.com.piotrslowinski.model.Author;
 import pl.com.piotrslowinski.model.Genre;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -50,123 +52,90 @@ public class CreateBookTest extends AcceptanceTest {
     @Autowired
     private AddGenreCommand addGenreCommand;
 
-    @Test
-    public void shouldAddGenre(){
-        //given
-        addGenreCommand.setName("fiction");
-        addGenreHandler.handle(addGenreCommand);
-        //then
-        Genre genre = genreRepository.get(1);
-        assertEquals("fiction", genre.getName());
 
+    public void addGenre(String genreName) {
+        AddGenreCommand addGenreCommand = new AddGenreCommand();
+        addGenreCommand.setName(genreName);
+        addGenreHandler.handle(addGenreCommand);
     }
 
-
-    @Test
-    public void shouldCreateAuthor(){
-        //given
+    private void addAuthor(String firstName, String lastName) {
         AddAuthorCommand addAuthorCommand = new AddAuthorCommand();
         addAuthorCommand.setFirstName("Jan");
         addAuthorCommand.setLastName("Nowak");
         addAuthorHandler.handle(addAuthorCommand);
+    }
+
+    private void createBook(String title, String isbn, String publishedAt, int genrId, int authorId) {
+        CreateBookCommand createBookCommand = new CreateBookCommand();
+        createBookCommand.setTitle(title);
+        createBookCommand.setIsbn(isbn);
+        createBookCommand.setPublishedAt(LocalDate.parse(publishedAt));
+        createBookCommand.setGenreId(genrId);
+        createBookCommand.setAuthorId(authorId);
+        createBookHandler.handle(createBookCommand);
+    }
+
+    @Test
+    public void shouldAddGenre() {
+        //given
+        addGenre("fiction");
+        //then
+        Genre genre = genreRepository.get(1);
+        assertEquals("fiction", genre.getName());
+    }
+
+
+    @Test
+    public void shouldCreateAuthor() {
+        //given
+        addAuthor("Jan", "Nowak");
 
         //then
         Author author = authorRepository.get(1);
         assertEquals("Jan", author.getFirstName());
     }
 
+
     @Test
-    public void shouldCreateBook(){
+    public void shouldCreateBook() {
         //given
-        AddGenreCommand addGenreCommand = new AddGenreCommand();
-        addGenreCommand.setName("fiction");
-        addGenreHandler.handle(addGenreCommand);
-        AddAuthorCommand addAuthorCommand = new AddAuthorCommand();
-        addAuthorCommand.setFirstName("Jan");
-        addAuthorCommand.setLastName("Nowak");
-        addAuthorHandler.handle(addAuthorCommand);
+        addGenre("fiction");
+        addAuthor("Jan", "Nowak");
 
         //when
-        CreateBookCommand createBookCommand = new CreateBookCommand();
-        createBookCommand.setTitle("Akuku");
-        createBookCommand.setIsbn("abc123");
-        createBookCommand.setPublishedAt(LocalDate.parse("1999-01-01"));
-        createBookCommand.setGenreId(1);
-        createBookCommand.setAuthorId(1);
-        createBookHandler.handle(createBookCommand);
+        createBook("Akuku", "abc123", "1999-01-01", 1, 1);
 
         //then
         DetailedBookDto bookDto = bookFinder.getBookDetails(1);
         assertEquals("Akuku", bookDto.getTitle());
-        assertEquals("fiction",bookDto.getGenre().getName());
+        assertEquals("fiction", bookDto.getGenre().getName());
         assertEquals(Arrays.asList("Nowak"), bookDto.getAuthors().stream().
                 map(Author::getLastName).collect(Collectors.toList()));
+        assertEquals(1, bookDto.getAuthors().size());
+        assertEquals(1, bookFinder.getAll().size());
     }
 
     @Test
-    public void shouldAddSpecimen() {
+    public void shouldAddMoreBooks(){
         //given
-        AddGenreCommand addGenreCommand = new AddGenreCommand();
-        addGenreCommand.setName("fiction");
-        addGenreHandler.handle(addGenreCommand);
-        AddAuthorCommand addAuthorCommand = new AddAuthorCommand();
-        addAuthorCommand.setFirstName("Jan");
-        addAuthorCommand.setLastName("Nowak");
-        addAuthorHandler.handle(addAuthorCommand);
+        addGenre("fiction");
+        addGenre("drama");
+        addAuthor("Jan", "Nowak");
+        addAuthor("Ryszard", "Sienkiewicz");
 
         //when
-        CreateBookCommand createBookCommand = new CreateBookCommand();
-        createBookCommand.setTitle("Akuku");
-        createBookCommand.setIsbn("abc123");
-        createBookCommand.setPublishedAt(LocalDate.parse("1999-01-01"));
-        createBookCommand.setGenreId(1);
-        createBookCommand.setAuthorId(1);
-        createBookHandler.handle(createBookCommand);
-
-        AddNewSpecimenCommand addNewSpecimenCommand = new AddNewSpecimenCommand();
-        addNewSpecimenCommand.setBookId(1);
-        addNewSpecimenCommand.setCode("code");
-        addNewSpecimenHandler.handle(addNewSpecimenCommand);
+        createBook("Akuku", "abc123", "1999-01-01", 1, 2);
+        createBook("Ałaa", "ddt666", "2000-01-01", 2,2);
 
         //then
-        DetailedBookDto bookDto = bookFinder.getBookDetails(1);
-        assertEquals(Arrays.asList("code"), bookDto.getSpecimensCode().stream().collect(Collectors.toList()));
-
+        DetailedBookDto bookDto2 = bookFinder.getBookDetails(2);
+        assertEquals(2, bookFinder.getAll().size());
+        assertEquals("Akuku", bookFinder.getBookDetails(1).getTitle());
+        assertEquals("Ałaa", bookFinder.getBookDetails(2).getTitle());
+        assertEquals(Arrays.asList("Ryszard"),bookDto2.getAuthors().stream().
+                map(Author::getFirstName).collect(Collectors.toList()));
     }
 
-    @Test
-    public void shouldAddMoreSpecimen() {
-        //given
-        AddGenreCommand addGenreCommand = new AddGenreCommand();
-        addGenreCommand.setName("fiction");
-        addGenreHandler.handle(addGenreCommand);
-        AddAuthorCommand addAuthorCommand = new AddAuthorCommand();
-        addAuthorCommand.setFirstName("Jan");
-        addAuthorCommand.setLastName("Nowak");
-        addAuthorHandler.handle(addAuthorCommand);
 
-        //when
-        CreateBookCommand createBookCommand = new CreateBookCommand();
-        createBookCommand.setTitle("Akuku");
-        createBookCommand.setIsbn("abc123");
-        createBookCommand.setPublishedAt(LocalDate.parse("1999-01-01"));
-        createBookCommand.setGenreId(1);
-        createBookCommand.setAuthorId(1);
-        createBookHandler.handle(createBookCommand);
-
-        AddNewSpecimenCommand addNewSpecimenCommand = new AddNewSpecimenCommand();
-        addNewSpecimenCommand.setBookId(1);
-        addNewSpecimenCommand.setCode("code");
-        addNewSpecimenHandler.handle(addNewSpecimenCommand);
-
-        addNewSpecimenCommand.setBookId(1);
-        addNewSpecimenCommand.setCode("code2");
-        addNewSpecimenHandler.handle(addNewSpecimenCommand);
-
-        //then
-
-        DetailedBookDto bookDto = bookFinder.getBookDetails(1);
-        assertEquals(Arrays.asList("code","code2"), bookDto.getSpecimensCode().stream().collect(Collectors.toList()));
-
-    }
 }

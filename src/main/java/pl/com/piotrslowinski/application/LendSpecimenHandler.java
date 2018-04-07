@@ -34,7 +34,7 @@ public class LendSpecimenHandler implements Handler<LendSpecimenCommand>{
     @Transactional
     public void handle(LendSpecimenCommand cmd) {
         Client client = clientRepository.get(cmd.getClientId());
-        Specimen specimen = specimenRepository.get(cmd.getCode());
+        Specimen specimen = specimenRepository.get(cmd.getCode()).get();
         Lending lending = new Lending(client,specimen,timeProvider);
         client.borrowBook(lending);
         lendingRepository.save(lending);

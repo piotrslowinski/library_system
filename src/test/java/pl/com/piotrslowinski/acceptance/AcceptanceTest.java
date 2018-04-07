@@ -27,6 +27,15 @@ public class AcceptanceTest {
             em.createNativeQuery("DELETE FROM genres").executeUpdate();
             em.createNativeQuery("DELETE FROM addresses").executeUpdate();
             em.createNativeQuery("DELETE FROM clients").executeUpdate();
+            em.createNativeQuery("ALTER TABLE lendings AUTO_INCREMENT = 1").executeUpdate();
+            em.createNativeQuery("ALTER TABLE specimens AUTO_INCREMENT = 1").executeUpdate();
+            em.createNativeQuery("ALTER TABLE books_authors AUTO_INCREMENT = 1").executeUpdate();
+            em.createNativeQuery("ALTER TABLE authors AUTO_INCREMENT = 1").executeUpdate();
+            em.createNativeQuery("ALTER TABLE books AUTO_INCREMENT = 1").executeUpdate();
+            em.createNativeQuery("ALTER TABLE genres AUTO_INCREMENT = 1").executeUpdate();
+            em.createNativeQuery("ALTER TABLE addresses AUTO_INCREMENT = 1").executeUpdate();
+            em.createNativeQuery("ALTER TABLE clients AUTO_INCREMENT = 1").executeUpdate();
+
             return null;
         });
     }

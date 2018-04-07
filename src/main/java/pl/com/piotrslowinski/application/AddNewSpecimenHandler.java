@@ -4,6 +4,8 @@ import pl.com.piotrslowinski.model.Book;
 import pl.com.piotrslowinski.model.Specimen;
 import pl.com.piotrslowinski.model.commands.AddNewSpecimenCommand;
 import pl.com.piotrslowinski.model.commands.Command;
+import pl.com.piotrslowinski.model.commands.CommandInvalidException;
+import pl.com.piotrslowinski.model.commands.ValidationErrors;
 import pl.com.piotrslowinski.model.repositories.BookRepository;
 import pl.com.piotrslowinski.model.repositories.SpecimenRepository;
 import org.springframework.stereotype.Component;
@@ -24,10 +26,19 @@ public class AddNewSpecimenHandler implements Handler<AddNewSpecimenCommand> {
     @Transactional
     public void handle(AddNewSpecimenCommand cmd) {
         Book book = bookRepository.get(cmd.getBookId());
+        validateSpecimenPresence(cmd);
         Specimen specimen = new Specimen(book, cmd.getCode());
         book.addSpecimen(specimen);
         specimenRepository.save(specimen);
         bookRepository.save(book);
+    }
+
+    private void validateSpecimenPresence(AddNewSpecimenCommand cmd) {
+        if(specimenRepository.isSpecimenPresent(cmd.getCode())){
+            ValidationErrors errors = new ValidationErrors();
+            errors.add("specimen", "specimen already exists");
+            throw new CommandInvalidException(errors);
+        }
     }
 
     @Override

@@ -21,7 +21,7 @@ public class JPABookFinder implements BookFinder {
 
     @Override
     public List<BookDto> getAll() {
-        List<BookDto> results = entityManager.createQuery("SELECT NEW BookDto(" +
+        List<BookDto> results = entityManager.createQuery("SELECT NEW pl.com.piotrslowinski.application.BookDto(" +
                 "b.id, b.title, b.isbn) FROM Book b").getResultList();
         return results;
     }

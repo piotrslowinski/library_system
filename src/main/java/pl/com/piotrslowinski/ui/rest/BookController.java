@@ -47,7 +47,7 @@ public class BookController {
         return bookFinder.getBookDetails(id);
     }
 
-    @Secured
+//    @Secured
     @PutMapping("/books")
     public void addNew(@RequestBody CreateBookCommand cmd){
         gateway.execute(cmd);
@@ -58,7 +58,7 @@ public class BookController {
         return bookFinder.getAll();
     }
 
-    @Secured
+//    @Secured
     @PostMapping("/books/{bookId}/specimens")
     public DetailedBookDto addSpecimen(@PathVariable Integer bookId, @RequestBody AddNewSpecimenCommand cmd){
         cmd.setBookId(bookId);
@@ -66,7 +66,7 @@ public class BookController {
         return bookFinder.getBookDetails(bookId);
     }
 
-    @Secured
+//    @Secured
     @DeleteMapping("books/{bookId}/specimens")
     public DetailedBookDto removeSpecimen(@PathVariable Integer bookId, @RequestBody DeleteSpecimenCommand cmd){
         cmd.setBookId(bookId);
@@ -74,7 +74,7 @@ public class BookController {
         return bookFinder.getBookDetails(bookId);
     }
 
-    @Secured
+//    @Secured
     @PutMapping("books/{bookId}/authors")
     public DetailedBookDto assignToAuthor(@PathVariable Integer bookId, @RequestBody AssignAuthorCommand cmd){
         cmd.setBookId(bookId);
@@ -82,7 +82,7 @@ public class BookController {
         return bookFinder.getBookDetails(bookId);
     }
 
-    @Secured
+//    @Secured
     @PutMapping("/clients/{clientId}/lendings")
     public ClientDto lendBook(@PathVariable Integer clientId, @RequestBody LendSpecimenCommand cmd){
         cmd.setClientId(clientId);
@@ -90,7 +90,7 @@ public class BookController {
         return clientFinder.get(clientId);
     }
 
-    @Secured
+//    @Secured
     @DeleteMapping("/clients/{clientId}/lendings")
     public ClientDto returnBook(@PathVariable Integer clientId, @RequestBody ReturnSpecimenCommand cmd){
         cmd.setClientId(clientId);

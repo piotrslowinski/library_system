@@ -29,7 +29,7 @@ public class ReturnSpecimenHandler implements Handler<ReturnSpecimenCommand> {
     @Transactional
     public void handle(ReturnSpecimenCommand cmd) {
         Client client = clientRepository.get(cmd.getClientId());
-        Specimen specimen = specimenRepository.get(cmd.getCode());
+        Specimen specimen = specimenRepository.get(cmd.getCode()).get();
         Lending lending = lendingRepository.get(specimen);
         client.returnBook(lending);
         lendingRepository.save(lending);
