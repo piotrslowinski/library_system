@@ -1,5 +1,6 @@
 package pl.com.piotrslowinski.infrastructure;
 
+import org.springframework.transaction.annotation.Transactional;
 import pl.com.piotrslowinski.model.Author;
 import pl.com.piotrslowinski.model.repositories.AuthorRepository;
 import org.springframework.stereotype.Component;

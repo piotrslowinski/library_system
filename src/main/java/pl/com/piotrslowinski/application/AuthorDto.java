@@ -1,6 +1,8 @@
 package pl.com.piotrslowinski.application;
 
 
+import pl.com.piotrslowinski.model.Author;
+
 public class AuthorDto {
 
     private Integer id;
@@ -9,7 +11,13 @@ public class AuthorDto {
 
     private String lastName;
 
-    public AuthorDto(Integer id, String firstName, String lastName) {
+    public AuthorDto(Author author) {
+        this.id = author.getId();
+        this.firstName = author.getFirstName();
+        this.lastName = author.getLastName();
+    }
+
+    public AuthorDto(Integer id, String firstName, String lastName){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

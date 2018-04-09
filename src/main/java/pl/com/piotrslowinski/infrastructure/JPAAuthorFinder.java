@@ -19,7 +19,9 @@ public class JPAAuthorFinder implements AuthorFinder {
 
     @Override
     public List<AuthorDto> getAll() {
-        List<AuthorDto> results = entityManager.createQuery("SELECT NEW AuthorDto(a.id, a.firstName, a.lastName) FROM Author a").getResultList();
+        List<AuthorDto> results = entityManager.createQuery("SELECT NEW " +
+                "pl.com.piotrslowinski.application.AuthorDto(a.id, a.firstName, a.lastName) FROM Author a").
+                getResultList();
         return results;
     }
 }
