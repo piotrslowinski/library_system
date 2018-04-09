@@ -25,8 +25,8 @@ public class AcceptanceTest {
             em.createNativeQuery("DELETE FROM authors").executeUpdate();
             em.createNativeQuery("DELETE FROM books").executeUpdate();
             em.createNativeQuery("DELETE FROM genres").executeUpdate();
-            em.createNativeQuery("DELETE FROM addresses").executeUpdate();
             em.createNativeQuery("DELETE FROM clients").executeUpdate();
+            em.createNativeQuery("DELETE FROM addresses").executeUpdate();
             em.createNativeQuery("ALTER TABLE lendings AUTO_INCREMENT = 1").executeUpdate();
             em.createNativeQuery("ALTER TABLE specimens AUTO_INCREMENT = 1").executeUpdate();
             em.createNativeQuery("ALTER TABLE books_authors AUTO_INCREMENT = 1").executeUpdate();

@@ -35,9 +35,6 @@ public class CreateBookTest extends AcceptanceTest {
     private AddGenreHandler addGenreHandler;
 
     @Autowired
-    private AddNewSpecimenHandler addNewSpecimenHandler;
-
-    @Autowired
     private AssignAuthorHandler assignAuthorHandler;
 
     @Autowired
@@ -49,8 +46,6 @@ public class CreateBookTest extends AcceptanceTest {
     @Autowired
     private AuthorRepository authorRepository;
 
-    @Autowired
-    private AddGenreCommand addGenreCommand;
 
 
     public void addGenre(String genreName) {
