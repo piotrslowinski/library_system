@@ -7,7 +7,7 @@ import pl.com.piotrslowinski.infrastructure.Secured;
 import pl.com.piotrslowinski.model.commands.RegisterClientCommand;
 import org.springframework.web.bind.annotation.*;
 
-//@Secured
+@Secured
 @RestController
 @RequestMapping("/clients")
 public class ClientController {
