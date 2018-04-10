@@ -3,6 +3,7 @@ package pl.com.piotrslowinski.application;
 import pl.com.piotrslowinski.model.Client;
 import pl.com.piotrslowinski.model.Lending;
 import pl.com.piotrslowinski.model.Specimen;
+import pl.com.piotrslowinski.model.TimeProvider;
 import pl.com.piotrslowinski.model.commands.Command;
 import pl.com.piotrslowinski.model.commands.ReturnSpecimenCommand;
 import pl.com.piotrslowinski.model.repositories.ClientRepository;
@@ -31,7 +32,7 @@ public class ReturnSpecimenHandler implements Handler<ReturnSpecimenCommand> {
         Client client = clientRepository.get(cmd.getClientId());
         Specimen specimen = specimenRepository.get(cmd.getCode()).get();
         Lending lending = lendingRepository.get(specimen);
-        client.returnBook(lending);
+        client.returnBook(specimen);
         lendingRepository.save(lending);
         clientRepository.save(client);
     }

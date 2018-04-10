@@ -109,7 +109,11 @@ public class LendAndReturnBookTest extends AcceptanceTest {
         ClientDto clientDto = clientFinder.get(1);
         assertEquals(2, clientDto.getActualLendings().size());
         assertEquals(Arrays.asList("Java", "Spring"), clientDto.getActualLendings().stream().collect(Collectors.toList()));
-        assertEquals(Arrays.asList("111", "222"), clientDto.getLendingsHistory().stream().map(ClientLendingDto::getSpecimenCode).collect(Collectors.toList()));
+        assertEquals(Arrays.asList("111", "222"), clientDto.getLendingsHistory().stream().
+                map(ClientLendingDto::getSpecimenCode).collect(Collectors.toList()));
+        assertEquals(Arrays.asList("111","222"), clientDto.getLendingsHistory().stream().filter(lending ->
+                lending.getReturnDate().equals(LocalDate.parse("9999-01-01"))).
+                map(ClientLendingDto::getSpecimenCode).collect(Collectors.toList()));
     }
 
 
@@ -130,7 +134,28 @@ public class LendAndReturnBookTest extends AcceptanceTest {
         ClientDto clientDto = clientFinder.get(1);
         assertEquals(1, clientDto.getActualLendings().size());
         assertEquals(Arrays.asList("Spring"), clientDto.getActualLendings().stream().collect(Collectors.toList()));
+        assertEquals(Arrays.asList("222"), clientDto.getLendingsHistory().stream().filter(lending ->
+                lending.getReturnDate().equals(LocalDate.parse("9999-01-01"))).
+                map(ClientLendingDto::getSpecimenCode).collect(Collectors.toList()));
+    }
 
+    @Test
+    public void shouldReturnMultipleSpecimensFromDifferentBooks(){
+        //given
+        createBook("Java", "aaa", "2000-01-01", 1,1);
+        createBook("Spring", "bbb", "2000-01-01", 1,1);
+        addNewSpecimen(1, "111");
+        addNewSpecimen(2, "222");
+        lendSpecimen(1, "111");
+        lendSpecimen(1, "222");
+
+        //when
+        returnSpecimen(1,"111");
+        returnSpecimen(1, "222");
+
+        //then
+        ClientDto clientDto = clientFinder.get(1);
+        assertEquals(0, clientDto.getActualLendings().size());
     }
 
 

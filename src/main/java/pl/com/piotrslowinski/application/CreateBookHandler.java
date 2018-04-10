@@ -19,14 +19,12 @@ public class CreateBookHandler implements Handler<CreateBookCommand> {
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
     private GenreRepository genreRepository;
-    private TimeProvider timeProvider;
 
     public CreateBookHandler(BookRepository bookRepository, AuthorRepository authorRepository,
-                             GenreRepository genreRepository, TimeProvider timeProvider) {
+                             GenreRepository genreRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
         this.genreRepository = genreRepository;
-        this.timeProvider = timeProvider;
     }
 
     @Transactional

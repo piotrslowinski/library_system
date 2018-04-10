@@ -1,6 +1,8 @@
 package pl.com.piotrslowinski.application;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.com.piotrslowinski.model.Client;
+import pl.com.piotrslowinski.model.TimeProvider;
 import pl.com.piotrslowinski.model.commands.Command;
 import pl.com.piotrslowinski.model.commands.RegisterClientCommand;
 import pl.com.piotrslowinski.model.repositories.ClientRepository;
@@ -12,9 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class RegisterClientHandler implements Handler<RegisterClientCommand> {
 
     private ClientRepository repository;
+    @Autowired
+    private TimeProvider timeProvider;
 
-    public RegisterClientHandler(ClientRepository repository) {
+    public RegisterClientHandler(ClientRepository repository, TimeProvider timeProvider) {
         this.repository = repository;
+        this.timeProvider = timeProvider;
     }
 
 
@@ -26,7 +31,8 @@ public class RegisterClientHandler implements Handler<RegisterClientCommand> {
                 cmd.getDocumentNumber(),
                 cmd.getPesel(),
                 cmd.getStreet(),
-                cmd.getCity()
+                cmd.getCity(),
+                timeProvider
         );
         repository.save(client);
     }

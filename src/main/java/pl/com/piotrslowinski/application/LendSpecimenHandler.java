@@ -17,14 +17,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class LendSpecimenHandler implements Handler<LendSpecimenCommand>{
 
     private ClientRepository clientRepository;
-    private TimeProvider timeProvider;
     private SpecimenRepository specimenRepository;
     private LendingRepository lendingRepository;
 
     public LendSpecimenHandler(ClientRepository clientRepository,
-                               TimeProvider timeProvider, SpecimenRepository specimenRepository, LendingRepository lendingRepository) {
+                               SpecimenRepository specimenRepository, LendingRepository lendingRepository) {
         this.clientRepository = clientRepository;
-        this.timeProvider = timeProvider;
         this.specimenRepository = specimenRepository;
         this.lendingRepository = lendingRepository;
     }
@@ -35,8 +33,7 @@ public class LendSpecimenHandler implements Handler<LendSpecimenCommand>{
     public void handle(LendSpecimenCommand cmd) {
         Client client = clientRepository.get(cmd.getClientId());
         Specimen specimen = specimenRepository.get(cmd.getCode()).get();
-        Lending lending = new Lending(client,specimen,timeProvider);
-        client.borrowBook(lending);
+        Lending lending = client.borrowBook(specimen);
         lendingRepository.save(lending);
         clientRepository.save(client);
     }

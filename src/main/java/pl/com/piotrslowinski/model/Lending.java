@@ -1,18 +1,20 @@
 package pl.com.piotrslowinski.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import pl.com.piotrslowinski.infrastructure.StandardTimeProvider;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 
 @Entity
 @Table(name = "lendings")
 public class Lending {
 
-    @Transient
-    @Autowired
-    private TimeProvider timeProvider;
+//    @Transient
+//    @Autowired
+//    private TimeProvider timeProvider;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +35,14 @@ public class Lending {
     public Lending(Client client, Specimen specimen, TimeProvider timeProvider) {
         this.client = client;
         this.specimen = specimen;
-        this.timeProvider = timeProvider;
+//        this.timeProvider = timeProvider;
         this.lendingDate = timeProvider.today();
+        returnDate = TimeProvider.MAX_DATE;
+    }
+    public Lending(Client client, Specimen specimen) {
+        this.client = client;
+        this.specimen = specimen;
+        this.lendingDate = LocalDate.now();
         returnDate = TimeProvider.MAX_DATE;
     }
 
@@ -77,8 +85,25 @@ public class Lending {
         return returnDate.isAfter(LocalDate.now());
     }
 
+    public boolean isBorrowed(Specimen specimen){
+        return isCurrent() && specimen.equals(this.specimen);
+    }
+
     public void terminate() {
         returnDate = LocalDate.now();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Lending)) return false;
+        Lending lending = (Lending) o;
+        return Objects.equals(getSpecimen(), lending.getSpecimen());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getSpecimen());
+    }
 }

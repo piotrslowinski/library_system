@@ -3,6 +3,7 @@ package pl.com.piotrslowinski.model;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Objects;
 
 
 @Entity
@@ -59,5 +60,19 @@ public class Specimen {
 
     public String getSpecimensTitle(){
         return book.getTitle();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Specimen)) return false;
+        Specimen specimen = (Specimen) o;
+        return Objects.equals(getCode(), specimen.getCode());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getCode());
     }
 }

@@ -3,8 +3,7 @@ package pl.com.piotrslowinski.model;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -96,21 +95,25 @@ public class Client {
         this.address = new Address(street, city);
     }
 
-    public void borrowBook(Lending lending) {
-        if (!isCurrentlyBorrowed(lending))
+    public Lending borrowBook(Specimen specimen) {
+        Lending lending = null;
+        if (!hasSpecimen(specimen)) {
+            lending = new Lending(this, specimen);
             lendings.add(lending);
+        }
+        return lending;
     }
 
-    private boolean isCurrentlyBorrowed(Lending lending) {
-        return getCurrentLendings().contains(lending);
+    private boolean hasSpecimen(Specimen specimen){
+        return getCurrentSpecimens().contains(specimen);
     }
 
     public Collection<Lending> getCurrentLendings() {
         return lendings.stream().filter(Lending::isCurrent).collect(Collectors.toList());
     }
 
-    public void returnBook(Lending lending) {
-        lendings.stream().filter((specimen) -> lending.isCurrent()).findFirst().ifPresent(Lending::terminate);
+    public void returnBook(Specimen specimen) {
+        lendings.stream().filter((lending) -> lending.isBorrowed(specimen)).findFirst().ifPresent(Lending::terminate);
     }
 
     public Collection<Specimen> getCurrentSpecimens() {
