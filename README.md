@@ -47,8 +47,8 @@ Used technologies:
 ...
 
 		{
-			"title": "Java",
-			"isbn": "abc123",
+			"titleQuery": "Java",
+			"isbnQuery": "abc123",
 			"publishedAt": "2000-01-01",
 			"genreId": 1,
 			"authorId": 1
@@ -76,8 +76,8 @@ Used technologies:
 
 		{
 			"id": 1,
-			"title": "Java",
-			"isbn": "abc123",
+			"titleQuery": "Java",
+			"isbnQuery": "abc123",
 			"authors": [
 				{
 					"firstName": "Frederick",
@@ -146,25 +146,25 @@ Used technologies:
 				"lendingDate": "2018-01-10",
 		    "returnDate": "2018-01-11",
 		    "specimenCode": "A123",
-		    "title": "Dziady"
+		    "titleQuery": "Dziady"
 		},
 		{
 		    "lendingDate": "2018-01-10",
 		    "returnDate": "9999-01-01",
 		    "specimenCode": "A111",
-		    "title": "Kordian"
+		    "titleQuery": "Kordian"
 		},
 		{
 		    "lendingDate": "2018-01-10",
 		    "returnDate": "9999-01-01",
 		    "specimenCode": "B111",
-		    "title": "Kordian"
+		    "titleQuery": "Kordian"
 		},
 		{
 		    "lendingDate": "2018-02-22",
 		    "returnDate": "9999-01-01",
 		    "specimenCode": "ccc",
-		    "title": "Dziady"
+		    "titleQuery": "Dziady"
 		}
 	    ],
 			"actualLendings": [
@@ -187,13 +187,13 @@ Used technologies:
 		[
 			{
 				"id": 1,
-				"title": "Java",
-				"isbn": "abc123"
+				"titleQuery": "Java",
+				"isbnQuery": "abc123"
 			},
 			{
 				"id": 2,
-				"title": "Spring",
-				"isbn": "chud7ge72"
+				"titleQuery": "Spring",
+				"isbnQuery": "chud7ge72"
 			}
 		]
 		
@@ -209,8 +209,8 @@ Used technologies:
 
 		{
 	    	"id": 1,
-	    	"title": "Java",
-	   	"isbn": "ABC-123",
+	    	"titleQuery": "Java",
+	   	"isbnQuery": "ABC-123",
 	   	"authors": [
 		{
 		    "id": 1,
@@ -259,25 +259,25 @@ Used technologies:
 		    "lendingDate": "2018-01-10",
 		    "returnDate": "9999-01-01",
 		    "specimenCode": "A123",
-		    "title": "Dziady"
+		    "titleQuery": "Dziady"
 		},
 		{
 		    "lendingDate": "2018-02-22",
 		    "returnDate": "9999-01-01",
 		    "specimenCode": "ccc",
-		    "title": "Dziady"
+		    "titleQuery": "Dziady"
 		},
 		{
 		    "lendingDate": "2018-01-10",
 		    "returnDate": "9999-01-01",
 		    "specimenCode": "A111",
-		    "title": "Kordian"
+		    "titleQuery": "Kordian"
 		},
 		{
 		    "lendingDate": "2018-01-10",
 		    "returnDate": "9999-01-01",
 		    "specimenCode": "B111",
-		    "title": "Kordian"
+		    "titleQuery": "Kordian"
 		}
 	    ],
 		"actualLendings": [
@@ -321,25 +321,25 @@ Used technologies:
 		    "lendingDate": "2018-01-10",
 		    "returnDate": "2018-01-11",
 		    "specimenCode": "A123",
-		    "title": "Dziady"
+		    "titleQuery": "Dziady"
 		},
 		{
 		    "lendingDate": "2018-02-22",
 		    "returnDate": "9999-01-01",
 		    "specimenCode": "ccc",
-		    "title": "Dziady"
+		    "titleQuery": "Dziady"
 		},
 		{
 		    "lendingDate": "2018-01-10",
 		    "returnDate": "9999-01-01",
 		    "specimenCode": "A111",
-		    "title": "Kordian"
+		    "titleQuery": "Kordian"
 		},
 		{
 		    "lendingDate": "2018-01-10",
 		    "returnDate": "9999-01-01",
 		    "specimenCode": "B111",
-		    "title": "Kordian"
+		    "titleQuery": "Kordian"
 		}
 	    ],
 		"actualLendings": [
@@ -368,8 +368,8 @@ Used technologies:
 
 		{
 			"id": 1,
-			"title": "Dziady",
-			"isbn": "ABC-123",
+			"titleQuery": "Dziady",
+			"isbnQuery": "ABC-123",
 			"authors": [
 		{
 		    "id": 1,

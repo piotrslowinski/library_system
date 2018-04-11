@@ -12,4 +12,6 @@ public interface BookFinder {
     List<BookDto> getAll();
 
     DetailedBookDto getBookDetails(Integer bookId);
+
+    BookSearchResults search(BookSearchCriteria criteria);
 }
