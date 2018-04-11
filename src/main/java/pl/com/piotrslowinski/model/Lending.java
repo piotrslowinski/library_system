@@ -12,9 +12,9 @@ import java.util.Objects;
 @Table(name = "lendings")
 public class Lending {
 
-//    @Transient
-//    @Autowired
-//    private TimeProvider timeProvider;
+    @Transient
+    @Autowired
+    private TimeProvider timeProvider;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class Lending {
     public Lending(Client client, Specimen specimen, TimeProvider timeProvider) {
         this.client = client;
         this.specimen = specimen;
-//        this.timeProvider = timeProvider;
+        this.timeProvider = timeProvider;
         this.lendingDate = timeProvider.today();
         returnDate = TimeProvider.MAX_DATE;
     }
