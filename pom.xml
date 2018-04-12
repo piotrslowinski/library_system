@@ -22,6 +22,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<!-- 1# - Vaadin version -->
+		<vaadin.version>8.1.0</vaadin.version>
 	</properties>
 
 	<dependencies>
@@ -84,7 +86,41 @@
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 		</dependency>
+
+		<!-- #2 - Vaadin for Spring Boot -->
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-spring-boot-starter</artifactId>
+		</dependency>
+
+		<!-- #3 - NumberField for salaries -->
+		<dependency>
+			<groupId>org.vaadin.ui</groupId>
+			<artifactId>numberfield</artifactId>
+			<version>0.2.0</version>
+		</dependency>
 	</dependencies>
+
+	<!-- #4 - Vaadin dependency management configuration -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-bom</artifactId>
+				<version>${vaadin.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- #5 - Vaadin addons repository for NumberField -->
+	<repositories>
+		<repository>
+			<id>vaadin-addons</id>
+			<url>http://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>
