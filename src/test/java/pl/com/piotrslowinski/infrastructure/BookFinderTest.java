@@ -58,6 +58,70 @@ public class BookFinderTest extends AcceptanceTest {
                 map(BookDto::getTitle).collect(Collectors.toList()));
     }
 
+    @Test
+    public void shouldFindByIsbn() {
+        //given
+        book().withTitle("Java").withIsbn("aaa").create();
+        book().withTitle("Spring").withIsbn("bbb").create();
+
+        //when
+        criteria.setIsbnQuery("b");
+        search();
+
+        //then
+        assertEquals(Arrays.asList("Spring"), results.getResults().stream().
+                map(BookDto::getTitle).collect(Collectors.toList()));
+    }
+
+    @Test
+    public void shouldFindByGenre() {
+        //given
+        book().withTitle("Java").withGenre("science").create();
+        book().withTitle("E.T.").withGenre("fiction").create();
+        book().withTitle("Spring").withGenre("science").create();
+
+        //when
+        criteria.setGenreName("fiction");
+        search();
+
+        //then
+        assertEquals(Arrays.asList("E.T."), results.getResults().stream().
+                map(BookDto::getTitle).collect(Collectors.toList()));
+    }
+
+    @Test
+    public void shouldFindByAuthorsLastName(){
+        //given
+        book().withTitle("Psy").withAuthor("Jan", "Nowak").create();
+        book().withTitle("Koty").withAuthor("Jan", "Nowak").create();
+        book().withTitle("Ptaki").withAuthor("Adam", "Kowalski").create();
+
+        //when
+        criteria.setAuthorsLastName("nowak");
+        search();
+
+        //then
+        assertEquals(Arrays.asList("Psy", "Koty"), results.getResults().stream().
+                map(BookDto::getTitle).collect(Collectors.toList()));
+    }
+
+    @Test
+    public void shouldFindByAuthorsLastNameAndFirstName(){
+        //given
+        book().withTitle("Psy").withAuthor("Jan", "Nowak").create();
+        book().withTitle("Koty").withAuthor("Janina", "Nowak").create();
+        book().withTitle("Ptaki").withAuthor("Adam", "Kowalski").create();
+
+        //when
+        criteria.setAuthorsLastName("Nowak");
+        criteria.setAuthorsFirstName("Jan");
+        search();
+
+        //then
+        assertEquals(Arrays.asList("Psy"), results.getResults().stream().
+                map(BookDto::getTitle).collect(Collectors.toList()));
+    }
+
     private void search() {
         results = bookFinder.search(criteria);
     }

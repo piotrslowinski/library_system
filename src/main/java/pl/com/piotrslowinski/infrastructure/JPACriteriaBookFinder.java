@@ -7,10 +7,7 @@ import pl.com.piotrslowinski.model.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 @Component
@@ -80,7 +77,42 @@ public class JPACriteriaBookFinder implements BookFinder {
     private Predicate buildPredicate(BookSearchCriteria criteria, CriteriaBuilder cb, Root book) {
         Predicate predicate = cb.conjunction();
         predicate = addTitlePredicate(criteria, cb, book, predicate);
+        predicate = addIsbnPredicate(criteria, cb, book, predicate);
+        predicate = addGenrePredicate(criteria, cb, book, predicate);
+        predicate = addAuthorsLastNamePredicate(criteria, cb, book, predicate);
+        predicate = addAuthorsFirstNamePredicate(criteria, cb, book, predicate);
 
+        return predicate;
+    }
+
+    private Predicate addAuthorsFirstNamePredicate(BookSearchCriteria criteria, CriteriaBuilder cb, Root book, Predicate predicate) {
+        if (criteria.getAuthorsFirstName() != null){
+            Join authors = book.join("authors");
+            predicate = cb.and(predicate, authors.get("firstName").in(criteria.getAuthorsFirstName()));
+        }
+        return predicate;
+    }
+
+    private Predicate addAuthorsLastNamePredicate(BookSearchCriteria criteria, CriteriaBuilder cb, Root book, Predicate predicate) {
+        if (criteria.getAuthorsLastName() != null){
+            Join authors = book.join("authors");
+            predicate = cb.and(predicate, (authors.get("lastName").in(criteria.getAuthorsLastName())));
+        }
+        return predicate;
+    }
+
+    private Predicate addGenrePredicate(BookSearchCriteria criteria, CriteriaBuilder cb, Root book, Predicate predicate) {
+        if (criteria.getGenreName() != null) {
+            Join genre = book.join("genre");
+            predicate = cb.and(predicate, genre.get("name").in(criteria.getGenreName()));
+        }
+        return predicate;
+    }
+
+    private Predicate addIsbnPredicate(BookSearchCriteria criteria, CriteriaBuilder cb, Root book, Predicate predicate) {
+        if (criteria.getIsbnQuery() != null)  {
+            predicate = cb.and(predicate, cb.like(book.get("isbn"), criteria.getIsbnQuery() + "%"));
+        }
         return predicate;
     }
 

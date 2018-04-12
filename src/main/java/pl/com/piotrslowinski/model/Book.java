@@ -21,7 +21,7 @@ public class Book {
     @Column(name = "published_at")
     private LocalDate publishedAt;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Genre genre;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
