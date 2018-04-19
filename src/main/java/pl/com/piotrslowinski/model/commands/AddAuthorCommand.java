@@ -1,7 +1,6 @@
 package pl.com.piotrslowinski.model.commands;
 
 
-
 public class AddAuthorCommand implements Command {
 
 

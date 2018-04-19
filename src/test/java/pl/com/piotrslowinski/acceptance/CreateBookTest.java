@@ -47,7 +47,6 @@ public class CreateBookTest extends AcceptanceTest {
     private AuthorRepository authorRepository;
 
 
-
     public void addGenre(String genreName) {
         AddGenreCommand addGenreCommand = new AddGenreCommand();
         addGenreCommand.setName(genreName);
@@ -71,7 +70,7 @@ public class CreateBookTest extends AcceptanceTest {
         createBookHandler.handle(createBookCommand);
     }
 
-    public void assignAuthor(int bookId, int authorId){
+    public void assignAuthor(int bookId, int authorId) {
         AssignAuthorCommand cmd = new AssignAuthorCommand();
         cmd.setBookId(bookId);
         cmd.setAuthorId(authorId);
@@ -89,7 +88,7 @@ public class CreateBookTest extends AcceptanceTest {
     }
 
     @Test
-    public void shouldAddMoreGenres(){
+    public void shouldAddMoreGenres() {
         //given
         addGenre("fiction");
         addGenre("drama");
@@ -113,7 +112,7 @@ public class CreateBookTest extends AcceptanceTest {
     }
 
     @Test
-    public void shouldCreateMoreAuthors(){
+    public void shouldCreateMoreAuthors() {
         //given
         addAuthor("Jan", "Nowak");
         addAuthor("Adam", "Kowalski");
@@ -150,7 +149,7 @@ public class CreateBookTest extends AcceptanceTest {
     }
 
     @Test
-    public void shouldAddMoreBooks(){
+    public void shouldAddMoreBooks() {
         //given
         addGenre("fiction");
         addGenre("drama");
@@ -159,7 +158,7 @@ public class CreateBookTest extends AcceptanceTest {
 
         //when
         createBook("Akuku", "abc123", "1999-01-01", 1, 1);
-        createBook("Ałaa", "ddt666", "2000-01-01", 2,2);
+        createBook("Ałaa", "ddt666", "2000-01-01", 2, 2);
 
         //then
         DetailedBookDto bookDto1 = bookFinder.getBookDetails(1);
@@ -167,22 +166,22 @@ public class CreateBookTest extends AcceptanceTest {
         assertEquals(2, bookFinder.getAll().size());
         assertEquals("Akuku", bookFinder.getBookDetails(1).getTitle());
         assertEquals("Ałaa", bookFinder.getBookDetails(2).getTitle());
-        assertEquals(Arrays.asList("Jan"),bookDto1.getAuthors().stream().
+        assertEquals(Arrays.asList("Jan"), bookDto1.getAuthors().stream().
                 map(Author::getFirstName).collect(Collectors.toList()));
-        assertEquals(Arrays.asList("Ryszard"),bookDto2.getAuthors().stream().
+        assertEquals(Arrays.asList("Ryszard"), bookDto2.getAuthors().stream().
                 map(Author::getFirstName).collect(Collectors.toList()));
         assertEquals("fiction", bookDto1.getGenre().getName());
         assertEquals("drama", bookDto2.getGenre().getName());
     }
 
     @Test
-    public void shouldAssignAuthorsWhileCreatingBook(){
+    public void shouldAssignAuthorsWhileCreatingBook() {
         addGenre("fiction");
         addAuthor("Jan", "Nowak");
         addAuthor("John", "Doe");
 
         //when
-        createBook("Java", "abc123", "2000-01-01",1,2);
+        createBook("Java", "abc123", "2000-01-01", 1, 2);
 
         //then
         DetailedBookDto bookDto = bookFinder.getBookDetails(1);
@@ -191,7 +190,7 @@ public class CreateBookTest extends AcceptanceTest {
     }
 
     @Test
-    public void shouldAssignManyAuthorToExistingBook(){
+    public void shouldAssignManyAuthorToExistingBook() {
         //given
         addGenre("fiction");
         addAuthor("Jan", "Nowak");

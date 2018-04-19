@@ -62,7 +62,7 @@ public class LendAndReturnBookTest extends AcceptanceTest {
     @Test
     public void shouldBorrowBook() {
         //given
-        createBook("Java", "abc", "2000-01-01", 1,1);
+        createBook("Java", "abc", "2000-01-01", 1, 1);
         addNewSpecimen(1, "111");
 
         //when
@@ -76,9 +76,9 @@ public class LendAndReturnBookTest extends AcceptanceTest {
     }
 
     @Test
-    public void shouldBorrowManySpecimens(){
+    public void shouldBorrowManySpecimens() {
         //given
-        createBook("Java", "aaa", "2000-01-01", 1,1);
+        createBook("Java", "aaa", "2000-01-01", 1, 1);
         addNewSpecimen(1, "111");
         addNewSpecimen(1, "222");
 
@@ -94,10 +94,10 @@ public class LendAndReturnBookTest extends AcceptanceTest {
     }
 
     @Test
-    public void shouldBorrowManySpecimenFromDifferentBooks(){
+    public void shouldBorrowManySpecimenFromDifferentBooks() {
         //given
-        createBook("Java", "aaa", "2000-01-01", 1,1);
-        createBook("Spring", "bbb", "2000-01-01", 1,1);
+        createBook("Java", "aaa", "2000-01-01", 1, 1);
+        createBook("Spring", "bbb", "2000-01-01", 1, 1);
         addNewSpecimen(1, "111");
         addNewSpecimen(2, "222");
 
@@ -111,24 +111,24 @@ public class LendAndReturnBookTest extends AcceptanceTest {
         assertEquals(Arrays.asList("Java", "Spring"), clientDto.getActualLendings().stream().collect(Collectors.toList()));
         assertEquals(Arrays.asList("111", "222"), clientDto.getLendingsHistory().stream().
                 map(ClientLendingDto::getSpecimenCode).collect(Collectors.toList()));
-        assertEquals(Arrays.asList("111","222"), clientDto.getLendingsHistory().stream().filter(lending ->
+        assertEquals(Arrays.asList("111", "222"), clientDto.getLendingsHistory().stream().filter(lending ->
                 lending.getReturnDate().equals(LocalDate.parse("9999-01-01"))).
                 map(ClientLendingDto::getSpecimenCode).collect(Collectors.toList()));
     }
 
 
     @Test
-    public void shouldReturnSpecimensFromDifferentBooks(){
+    public void shouldReturnSpecimensFromDifferentBooks() {
         //given
-        createBook("Java", "aaa", "2000-01-01", 1,1);
-        createBook("Spring", "bbb", "2000-01-01", 1,1);
+        createBook("Java", "aaa", "2000-01-01", 1, 1);
+        createBook("Spring", "bbb", "2000-01-01", 1, 1);
         addNewSpecimen(1, "111");
         addNewSpecimen(2, "222");
         lendSpecimen(1, "111");
         lendSpecimen(1, "222");
 
         //when
-        returnSpecimen(1,"111");
+        returnSpecimen(1, "111");
 
         //then
         ClientDto clientDto = clientFinder.get(1);
@@ -140,24 +140,23 @@ public class LendAndReturnBookTest extends AcceptanceTest {
     }
 
     @Test
-    public void shouldReturnMultipleSpecimensFromDifferentBooks(){
+    public void shouldReturnMultipleSpecimensFromDifferentBooks() {
         //given
-        createBook("Java", "aaa", "2000-01-01", 1,1);
-        createBook("Spring", "bbb", "2000-01-01", 1,1);
+        createBook("Java", "aaa", "2000-01-01", 1, 1);
+        createBook("Spring", "bbb", "2000-01-01", 1, 1);
         addNewSpecimen(1, "111");
         addNewSpecimen(2, "222");
         lendSpecimen(1, "111");
         lendSpecimen(1, "222");
 
         //when
-        returnSpecimen(1,"111");
+        returnSpecimen(1, "111");
         returnSpecimen(1, "222");
 
         //then
         ClientDto clientDto = clientFinder.get(1);
         assertEquals(0, clientDto.getActualLendings().size());
     }
-
 
 
     @Before
@@ -185,7 +184,7 @@ public class LendAndReturnBookTest extends AcceptanceTest {
         createBookHandler.handle(createBookCommand);
     }
 
-    private void addNewSpecimen(Integer bookId, String code){
+    private void addNewSpecimen(Integer bookId, String code) {
         AddNewSpecimenCommand cmd = new AddNewSpecimenCommand();
         cmd.setBookId(bookId);
         cmd.setCode(code);
@@ -199,7 +198,7 @@ public class LendAndReturnBookTest extends AcceptanceTest {
         lendSpecimenHandler.handle(cmd);
     }
 
-    private void returnSpecimen(int clientId, String code){
+    private void returnSpecimen(int clientId, String code) {
         ReturnSpecimenCommand cmd = new ReturnSpecimenCommand();
         cmd.setClientId(clientId);
         cmd.setCode(code);

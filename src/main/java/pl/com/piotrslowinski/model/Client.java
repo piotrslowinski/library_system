@@ -104,7 +104,7 @@ public class Client {
         return lending;
     }
 
-    private boolean hasSpecimen(Specimen specimen){
+    private boolean hasSpecimen(Specimen specimen) {
         return getCurrentSpecimens().contains(specimen);
     }
 

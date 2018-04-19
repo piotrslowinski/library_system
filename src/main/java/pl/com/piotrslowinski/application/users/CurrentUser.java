@@ -21,7 +21,7 @@ public class CurrentUser {
     }
 
     public Optional<UserDto> getUserInfo() {
-        if(userId == null)
+        if (userId == null)
             return Optional.empty();
         User user = userRepository.get(userId);
         return Optional.of(new UserDto(user));
@@ -32,9 +32,9 @@ public class CurrentUser {
     }
 
     public boolean isAuthenticated(Role[] requiredRoles) {
-        if(userId == null)
+        if (userId == null)
             return false;
-        if(requiredRoles == null || requiredRoles.length == 0)
+        if (requiredRoles == null || requiredRoles.length == 0)
             return true;
         User user = userRepository.get(userId);
         return user.hasRoles(requiredRoles);

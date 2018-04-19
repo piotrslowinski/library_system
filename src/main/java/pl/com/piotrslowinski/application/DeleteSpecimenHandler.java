@@ -32,7 +32,7 @@ public class DeleteSpecimenHandler implements Handler<DeleteSpecimenCommand> {
     }
 
     private void validateSpecimenPresence(DeleteSpecimenCommand cmd) {
-        if(!specimenRepository.isSpecimenPresent(cmd.getCode())){
+        if (!specimenRepository.isSpecimenPresent(cmd.getCode())) {
             ValidationErrors errors = new ValidationErrors();
             errors.add("specimen", "specimen with given code doesn't exist");
             throw new CommandInvalidException(errors);

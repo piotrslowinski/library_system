@@ -1,6 +1,7 @@
 package pl.com.piotrslowinski.ui.web;
 
 
+import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.navigator.SpringViewProvider;
@@ -17,6 +18,7 @@ import pl.com.piotrslowinski.ui.web.general.UIConstants;
 import java.util.List;
 
 @SpringUI
+@Theme("valo")
 public class SearchBooksView extends UI {
 
     @Autowired
@@ -43,8 +45,14 @@ public class SearchBooksView extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         createRootLayout();
+        addHeader();
         createAndConfigureChildComponents();
         populateRootLayout();
+    }
+
+    private void addHeader() {
+        Label header = new Label("Find book");
+        rootLayout.addComponent(header);
     }
 
     private void populateRootLayout() {
@@ -78,7 +86,7 @@ public class SearchBooksView extends UI {
 
     private void searchLastPageOfBooks() {
         BookSearchCriteria bsc = collectCriteria();
-        if(bsc.getPageNumber() >= previouslySearchedLastPageIndex) return;
+        if (bsc.getPageNumber() >= previouslySearchedLastPageIndex) return;
         BookSearchResults bsr = getSearchResults(bsc);
         bsc.setPageNumber(bsr.getPagesCount());
         bsr = getSearchResults(bsc);
@@ -87,7 +95,7 @@ public class SearchBooksView extends UI {
 
     private void searchFirstPageOfBooks() {
         BookSearchCriteria bsc = collectCriteria();
-        if(bsc.getPageNumber() <= 1) return;
+        if (bsc.getPageNumber() <= 1) return;
         bsc.setPageNumber(1);
         BookSearchResults bsr = getSearchResults(bsc);
         populateViewWithSearchResults(bsr, bsc.getPageNumber());
@@ -96,7 +104,7 @@ public class SearchBooksView extends UI {
     private void searchPreviousPageOfBooks() {
         BookSearchCriteria bsc = collectCriteria();
         bsc.setPageNumber(bsc.getPageNumber() - 1);
-        if(bsc.getPageNumber() < 1) return;
+        if (bsc.getPageNumber() < 1) return;
         BookSearchResults bsr = getSearchResults(bsc);
         populateViewWithSearchResults(bsr, bsc.getPageNumber());
     }
@@ -104,7 +112,7 @@ public class SearchBooksView extends UI {
     private void searchNextPageOfBooks() {
         BookSearchCriteria bsc = collectCriteria();
         bsc.setPageNumber(bsc.getPageNumber() + 1);
-        if(bsc.getPageNumber() >= previouslySearchedLastPageIndex) return;
+        if (bsc.getPageNumber() >= previouslySearchedLastPageIndex) return;
         BookSearchResults bsr = getSearchResults(bsc);
         populateViewWithSearchResults(bsr, bsc.getPageNumber());
     }
@@ -172,7 +180,7 @@ public class SearchBooksView extends UI {
         booksGrid.addColumn(BookDto::getIsbn).setCaption(UIConstants.ISBN);
         booksGrid.setSelectionMode(Grid.SelectionMode.SINGLE);
         booksGrid.addSelectionListener(event -> {
-            if(event.getFirstSelectedItem().isPresent()) {
+            if (event.getFirstSelectedItem().isPresent()) {
                 BookDto b = event.getFirstSelectedItem().get();
                 // Notification.show(b.toString());
             }

@@ -22,7 +22,7 @@ public class JPAGenreRepository implements GenreRepository {
     @Override
     public Genre get(Integer id) {
         Genre genre = entityManager.find(Genre.class, id);
-        if(genre == null)
+        if (genre == null)
             throw new NoSuchEntityException();
         return genre;
     }

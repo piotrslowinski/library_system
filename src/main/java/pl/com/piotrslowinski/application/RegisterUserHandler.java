@@ -26,7 +26,7 @@ public class RegisterUserHandler implements Handler<RegisterUserCommand> {
     }
 
     private void validateLoginFree(RegisterUserCommand cmd) {
-        if(userRepository.isLoginOccupied(cmd.getLogin())){
+        if (userRepository.isLoginOccupied(cmd.getLogin())) {
             ValidationErrors errors = new ValidationErrors();
             errors.add("login", "is occupied");
             throw new CommandInvalidException(errors);

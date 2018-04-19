@@ -10,8 +10,7 @@ public class BookDto {
     private String isbn;
 
 
-
-    public BookDto(Integer id, String title, String isbn ) {
+    public BookDto(Integer id, String title, String isbn) {
         this.id = id;
         this.title = title;
         this.isbn = isbn;

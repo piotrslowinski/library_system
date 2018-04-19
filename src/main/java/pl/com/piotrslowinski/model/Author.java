@@ -24,6 +24,7 @@ public class Author {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
     public Author(Integer id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;

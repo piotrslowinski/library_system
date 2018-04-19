@@ -35,7 +35,7 @@ public class AddNewAndDeleteSpecimenTest extends AcceptanceTest {
     private DeleteSpecimenHandler deleteSpecimenHandler;
 
     @Autowired
-    private  BookFinder bookFinder;
+    private BookFinder bookFinder;
 
     private AddNewSpecimenCommand addNewSpecimenCommand;
 
@@ -93,15 +93,13 @@ public class AddNewAndDeleteSpecimenTest extends AcceptanceTest {
         createBook("Koran", "abc123", "1999-01-01", 1, 1);
 
         //when
-        addSpecimen(1,"code");
+        addSpecimen(1, "code");
 
         //then
         DetailedBookDto bookDto = bookFinder.getBookDetails(1);
         assertEquals(Arrays.asList("code"), bookDto.getSpecimensCode().stream().collect(Collectors.toList()));
         assertEquals(1, bookFinder.getAll().size());
     }
-
-
 
 
     @Test
@@ -112,8 +110,8 @@ public class AddNewAndDeleteSpecimenTest extends AcceptanceTest {
         createBook("Koran", "abc123", "1999-01-01", 1, 1);
 
         //when
-        addSpecimen(1,"code");
-        addSpecimen(1,"code2");
+        addSpecimen(1, "code");
+        addSpecimen(1, "code2");
 
         //then
 
@@ -124,25 +122,25 @@ public class AddNewAndDeleteSpecimenTest extends AcceptanceTest {
     }
 
     @Test(expected = CommandInvalidException.class)
-    public void shouldNotAddSameSpecimenTwice(){
+    public void shouldNotAddSameSpecimenTwice() {
         //given
         addGenre("fiction");
         addAuthor("Jan", "Nowak");
         createBook("Koran", "abc123", "1999-01-01", 1, 1);
 
         //when
-        addSpecimen(1,"code");
-        addSpecimen(1,"code");
+        addSpecimen(1, "code");
+        addSpecimen(1, "code");
     }
 
     @Test
-    public void shouldDeleteSpecimen(){
+    public void shouldDeleteSpecimen() {
         //given
         addGenre("fiction");
         addAuthor("Jan", "Nowak");
         createBook("Koran", "abc123", "1999-01-01", 1, 1);
-        addSpecimen(1,"code");
-        addSpecimen(1,"code2");
+        addSpecimen(1, "code");
+        addSpecimen(1, "code2");
 
         //when
         deleteSpecimen(1, "code2");
@@ -156,7 +154,7 @@ public class AddNewAndDeleteSpecimenTest extends AcceptanceTest {
 
 
     @Test(expected = CommandInvalidException.class)
-    public void shouldThrowErrorWhileTryingToDeleteNonExistSpecimen(){
+    public void shouldThrowErrorWhileTryingToDeleteNonExistSpecimen() {
         //when
         deleteSpecimen(1, "code2");
     }

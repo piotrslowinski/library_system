@@ -28,7 +28,7 @@ public class JPASpecimenRepository implements SpecimenRepository {
                     .setParameter("code", code)
                     .getSingleResult();
             return Optional.of(specimen);
-        } catch (NoResultException ex){
+        } catch (NoResultException ex) {
             return Optional.empty();
         }
     }

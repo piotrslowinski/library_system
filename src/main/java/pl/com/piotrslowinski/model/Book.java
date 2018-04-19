@@ -40,7 +40,8 @@ public class Book {
         this.genre = genre;
 
     }
-    public Book(Integer id,String title, String isbn, LocalDate publishedA) {
+
+    public Book(Integer id, String title, String isbn, LocalDate publishedA) {
         this.id = id;
         this.title = title;
         this.isbn = isbn;
@@ -94,8 +95,8 @@ public class Book {
         this.genre = genre;
     }
 
-    public void assignAuthor(Author author){
-        if(!isCurrentlyAssignedToBook(author))
+    public void assignAuthor(Author author) {
+        if (!isCurrentlyAssignedToBook(author))
             authors.add(author);
     }
 
@@ -114,8 +115,8 @@ public class Book {
     }
 
     private boolean hasSpecimen(String code) {
-        for(Specimen s: specimens){
-            if(s.getCode().equals(code))
+        for (Specimen s : specimens) {
+            if (s.getCode().equals(code))
                 return true;
         }
         return false;

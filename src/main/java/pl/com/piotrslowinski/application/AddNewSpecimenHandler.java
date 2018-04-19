@@ -34,7 +34,7 @@ public class AddNewSpecimenHandler implements Handler<AddNewSpecimenCommand> {
     }
 
     private void validateSpecimenPresence(AddNewSpecimenCommand cmd) {
-        if(specimenRepository.isSpecimenPresent(cmd.getCode())){
+        if (specimenRepository.isSpecimenPresent(cmd.getCode())) {
             ValidationErrors errors = new ValidationErrors();
             errors.add("specimen", "specimen already exists");
             throw new CommandInvalidException(errors);

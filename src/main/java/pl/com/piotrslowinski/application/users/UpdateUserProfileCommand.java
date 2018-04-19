@@ -55,13 +55,13 @@ public class UpdateUserProfileCommand implements Command {
     public void validate(ValidationErrors errors) {
         validatePresence(errors, "userId", userId);
         validateFormat(errors, "login", login, "^[\\w\\d]+$");
-        if(newPassword != null && !newPassword.equals(repeatedPassword)) {
+        if (newPassword != null && !newPassword.equals(repeatedPassword)) {
             errors.add("newPassword", "passwords mismatch");
             errors.add("repeatedPassword", "passwords mismatch");
         }
         validateMinLength(errors, "password", newPassword, 6);
         validateMinLength(errors, "repeatedPassword", repeatedPassword, 6);
-        if(roles != null && roles.size() == 0) {
+        if (roles != null && roles.size() == 0) {
             errors.add("roles", "at least one role required");
         }
     }

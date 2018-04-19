@@ -33,8 +33,7 @@ public class JPAUserRepository implements UserRepository {
             User user = (User) entityManager.createQuery("FROM User u WHERE u.login = :login").
                     setParameter("login", login).getSingleResult();
             return Optional.of(user);
-        }
-        catch (NoResultException ex) {
+        } catch (NoResultException ex) {
             return Optional.empty();
         }
     }
@@ -42,7 +41,7 @@ public class JPAUserRepository implements UserRepository {
     @Override
     public User get(Integer userId) {
         User user = entityManager.find(User.class, userId);
-        if(user == null)
+        if (user == null)
             throw new NoSuchEntityException();
         return user;
     }

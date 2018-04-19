@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Component
-public class AssignAuthorHandler implements Handler<AssignAuthorCommand>{
+public class AssignAuthorHandler implements Handler<AssignAuthorCommand> {
 
     private AuthorRepository authorRepository;
     private BookRepository bookRepository;

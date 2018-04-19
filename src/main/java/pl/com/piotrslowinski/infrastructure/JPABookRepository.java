@@ -21,11 +21,10 @@ public class JPABookRepository implements BookRepository {
     @Override
     public Book get(Integer id) {
         Book book = entityManager.find(Book.class, id);
-        if(book == null)
+        if (book == null)
             throw new NoSuchElementException();
         return book;
     }
-
 
 
     @Override

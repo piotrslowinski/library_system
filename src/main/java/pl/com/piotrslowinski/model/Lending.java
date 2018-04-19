@@ -39,6 +39,7 @@ public class Lending {
         this.lendingDate = timeProvider.today();
         returnDate = TimeProvider.MAX_DATE;
     }
+
     public Lending(Client client, Specimen specimen) {
         this.client = client;
         this.specimen = specimen;
@@ -85,7 +86,7 @@ public class Lending {
         return returnDate.isAfter(LocalDate.now());
     }
 
-    public boolean isBorrowed(Specimen specimen){
+    public boolean isBorrowed(Specimen specimen) {
         return isCurrent() && specimen.equals(this.specimen);
     }
 

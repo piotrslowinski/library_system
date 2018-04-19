@@ -37,12 +37,12 @@ public class User {
     public User() {
     }
 
-    public void updateProfile(UpdateUserProfileCommand command){
-        if(command.getLogin() != null)
+    public void updateProfile(UpdateUserProfileCommand command) {
+        if (command.getLogin() != null)
             login = command.getLogin();
-        if(command.getNewPassword() != null)
+        if (command.getNewPassword() != null)
             password = command.getNewPassword();
-        if (command.getRoles() != null){
+        if (command.getRoles() != null) {
             roles.clear();
             roles.addAll(command.getRoles());
         }

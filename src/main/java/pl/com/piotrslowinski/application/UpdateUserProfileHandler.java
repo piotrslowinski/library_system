@@ -28,7 +28,7 @@ public class UpdateUserProfileHandler implements Handler<UpdateUserProfileComman
     }
 
     private void validateLoginFree(User user, UpdateUserProfileCommand command) {
-        if(wantsChangeLogin(user,command) && userRepository.isLoginOccupied(command.getLogin())){
+        if (wantsChangeLogin(user, command) && userRepository.isLoginOccupied(command.getLogin())) {
             ValidationErrors errors = new ValidationErrors();
             errors.add("login", "is occupied");
             throw new CommandInvalidException(errors);

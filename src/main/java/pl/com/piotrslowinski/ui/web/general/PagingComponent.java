@@ -51,7 +51,7 @@ public class PagingComponent extends CustomComponent {
         HorizontalLayout pagingLayout = new HorizontalLayout(firstPageButton, previousPageButton, currentPageLabel,
                 currentPageTextField, lastPageLabel, nextPageButton, lastPageButton);
         pagingLayout.setComponentAlignment(currentPageLabel, Alignment.MIDDLE_CENTER);
-        pagingLayout.setComponentAlignment(lastPageLabel,Alignment.MIDDLE_CENTER);
+        pagingLayout.setComponentAlignment(lastPageLabel, Alignment.MIDDLE_CENTER);
 
         HorizontalLayout comboLayout = new HorizontalLayout(resultsPerPageLabel, resultsPerPageComboBox);
         comboLayout.setComponentAlignment(resultsPerPageLabel, Alignment.MIDDLE_LEFT);
@@ -64,7 +64,7 @@ public class PagingComponent extends CustomComponent {
         setCompositionRoot(rootLayout);
     }
 
-    private List<Integer> createItemsForPerPageComboBox(){
+    private List<Integer> createItemsForPerPageComboBox() {
         List<Integer> items = new ArrayList<>(5);
         items.add(5);
         items.add(10);
@@ -85,8 +85,8 @@ public class PagingComponent extends CustomComponent {
 
         // simple validation
         char[] ca = selectedPageText.toCharArray();
-        for(char c : ca){
-            if(!Character.isDigit(c)) value = 1;
+        for (char c : ca) {
+            if (!Character.isDigit(c)) value = 1;
         }
 
         if (value < 1) value = 1;

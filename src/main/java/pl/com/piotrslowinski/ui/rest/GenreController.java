@@ -25,18 +25,18 @@ public class GenreController {
     }
 
     @GetMapping
-    public List<GenreDto> getGenreList(){
+    public List<GenreDto> getGenreList() {
         return genreFinder.getAll();
     }
 
     @GetMapping("/{id}")
-    public Genre get(@PathVariable Integer genreId){
+    public Genre get(@PathVariable Integer genreId) {
         return genreFinder.get(genreId);
     }
 
     @Secured
     @PutMapping
-    public void addGenre(@RequestBody AddGenreCommand cmd){
+    public void addGenre(@RequestBody AddGenreCommand cmd) {
         commandGateway.execute(cmd);
     }
 }

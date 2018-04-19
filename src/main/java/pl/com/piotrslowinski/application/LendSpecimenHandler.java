@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Component
-public class LendSpecimenHandler implements Handler<LendSpecimenCommand>{
+public class LendSpecimenHandler implements Handler<LendSpecimenCommand> {
 
     private ClientRepository clientRepository;
     private SpecimenRepository specimenRepository;

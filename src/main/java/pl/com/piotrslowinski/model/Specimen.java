@@ -58,7 +58,7 @@ public class Specimen {
         this.code = code;
     }
 
-    public String getSpecimensTitle(){
+    public String getSpecimensTitle() {
         return book.getTitle();
     }
 

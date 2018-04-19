@@ -30,7 +30,7 @@ public class JPACriteriaBookFinder implements BookFinder {
     @Transactional
     public DetailedBookDto getBookDetails(Integer bookId) {
         Book book = entityManager.find(Book.class, bookId);
-        if(book == null)
+        if (book == null)
             throw new NoSuchEntityException();
         return new DetailedBookDto(book);
     }
@@ -86,7 +86,7 @@ public class JPACriteriaBookFinder implements BookFinder {
     }
 
     private Predicate addAuthorsFirstNamePredicate(BookSearchCriteria criteria, CriteriaBuilder cb, Root book, Predicate predicate) {
-        if (criteria.getAuthorsFirstName() != null){
+        if (criteria.getAuthorsFirstName() != null) {
             Join authors = book.join("authors");
             predicate = cb.and(predicate, authors.get("firstName").in(criteria.getAuthorsFirstName()));
         }
@@ -94,7 +94,7 @@ public class JPACriteriaBookFinder implements BookFinder {
     }
 
     private Predicate addAuthorsLastNamePredicate(BookSearchCriteria criteria, CriteriaBuilder cb, Root book, Predicate predicate) {
-        if (criteria.getAuthorsLastName() != null){
+        if (criteria.getAuthorsLastName() != null) {
             Join authors = book.join("authors");
             predicate = cb.and(predicate, (authors.get("lastName").in(criteria.getAuthorsLastName())));
         }
@@ -110,7 +110,7 @@ public class JPACriteriaBookFinder implements BookFinder {
     }
 
     private Predicate addIsbnPredicate(BookSearchCriteria criteria, CriteriaBuilder cb, Root book, Predicate predicate) {
-        if (criteria.getIsbnQuery() != null)  {
+        if (criteria.getIsbnQuery() != null) {
             predicate = cb.and(predicate, cb.like(book.get("isbn"), criteria.getIsbnQuery() + "%"));
         }
         return predicate;

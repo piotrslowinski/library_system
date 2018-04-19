@@ -45,7 +45,7 @@ public class RegisterUserCommand implements Command {
     }
 
     private void validatePasswordsMath(String password, String repeatedPassword, ValidationErrors errors) {
-        if(password != null && repeatedPassword!= null && password.equals(repeatedPassword)){
+        if (password != null && repeatedPassword != null && password.equals(repeatedPassword)) {
             errors.add("password", "password mismatch");
             errors.add("repeatedPassword", "password mismatch");
         }

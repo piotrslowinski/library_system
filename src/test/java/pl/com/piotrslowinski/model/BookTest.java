@@ -18,12 +18,12 @@ public class BookTest {
 
     private Genre g1 = new Genre("poetry");
     private Genre g2 = new Genre("fiction");
-    private Book b1 = new Book(1,"Testowa", "abc", LocalDate.parse("1999-01-01"));
-    private Author author1 = new Author(1,"Adam", "Mickiewicz");
-    private Author author2 = new Author(2,"Adamus", "Mickiewiczus");
+    private Book b1 = new Book(1, "Testowa", "abc", LocalDate.parse("1999-01-01"));
+    private Author author1 = new Author(1, "Adam", "Mickiewicz");
+    private Author author2 = new Author(2, "Adamus", "Mickiewiczus");
 
     @Test
-    public void shouldAssignAuthor(){
+    public void shouldAssignAuthor() {
         //given
         b1.assignAuthor(author1);
         //then
@@ -31,7 +31,7 @@ public class BookTest {
     }
 
     @Test
-    public void shouldAssignManyAuthors(){
+    public void shouldAssignManyAuthors() {
         //when
         b1.assignAuthor(author1);
         b1.assignAuthor(author2);
@@ -39,9 +39,10 @@ public class BookTest {
         //then
         assertEquals(Arrays.asList(author1, author2), b1.getAuthors());
     }
+
     //
     @Test
-    public void shouldNotAssignTwiceTheSameAuthor(){
+    public void shouldNotAssignTwiceTheSameAuthor() {
         //when
         b1.assignAuthor(author1);
         b1.assignAuthor(author1);
@@ -51,9 +52,10 @@ public class BookTest {
         assertEquals(Arrays.asList(author1), b1.getAuthors());
         assertEquals(1, authors.size());
     }
+
     //
     @Test
-    public void shouldDeleteWrongAuthor(){
+    public void shouldDeleteWrongAuthor() {
         //when
         b1.assignAuthor(author1);
         b1.assignAuthor(author2);
@@ -67,7 +69,7 @@ public class BookTest {
     }
 
     @Test
-    public void shouldAssignGenre(){
+    public void shouldAssignGenre() {
         //when
         b1.assignGenre(g1);
         b1.assignGenre(g2);
@@ -76,20 +78,20 @@ public class BookTest {
     }
 
     @Test
-    public void shouldAddSpecimen(){
+    public void shouldAddSpecimen() {
         //when
         b1.addSpecimen(new Specimen("1"));
         b1.addSpecimen(new Specimen("1"));
         b1.addSpecimen(new Specimen("2"));
 
         //then
-        assertEquals(Arrays.asList("1","2"),b1.getSpecimens().stream().map(Specimen::getCode).collect(Collectors.toList()));
-        assertEquals(2,b1.getSpecimens().size());
+        assertEquals(Arrays.asList("1", "2"), b1.getSpecimens().stream().map(Specimen::getCode).collect(Collectors.toList()));
+        assertEquals(2, b1.getSpecimens().size());
     }
 
     @Test
-    public void shouldRemoveSpecimen(){
-       //given
+    public void shouldRemoveSpecimen() {
+        //given
         Specimen s1 = new Specimen("1");
         b1.addSpecimen(s1);
         b1.addSpecimen(s1);
@@ -99,8 +101,8 @@ public class BookTest {
         b1.remove(s1);
 
         //then
-        assertEquals(Arrays.asList("2"),b1.getSpecimens().stream().map(Specimen::getCode).collect(Collectors.toList()));
-        assertEquals(1,b1.getSpecimens().size());
+        assertEquals(Arrays.asList("2"), b1.getSpecimens().stream().map(Specimen::getCode).collect(Collectors.toList()));
+        assertEquals(1, b1.getSpecimens().size());
     }
 
 }

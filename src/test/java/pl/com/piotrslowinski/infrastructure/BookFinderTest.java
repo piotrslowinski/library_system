@@ -42,7 +42,7 @@ public class BookFinderTest extends AcceptanceTest {
     private TransactionTemplate tt;
 
     @Test
-    public void shouldFindByTitle(){
+    public void shouldFindByTitle() {
         //given
         book().withTitle("Janko Muzykant").create();
         book().withTitle("Java").create();
@@ -55,7 +55,7 @@ public class BookFinderTest extends AcceptanceTest {
         //then
         assertEquals(Arrays.asList("Janko Muzykant", "Java"),
                 results.getResults().stream().
-                map(BookDto::getTitle).collect(Collectors.toList()));
+                        map(BookDto::getTitle).collect(Collectors.toList()));
     }
 
     @Test
@@ -90,7 +90,7 @@ public class BookFinderTest extends AcceptanceTest {
     }
 
     @Test
-    public void shouldFindByAuthorsLastName(){
+    public void shouldFindByAuthorsLastName() {
         //given
         book().withTitle("Psy").withAuthor("Jan", "Nowak").create();
         book().withTitle("Koty").withAuthor("Jan", "Nowak").create();
@@ -106,7 +106,7 @@ public class BookFinderTest extends AcceptanceTest {
     }
 
     @Test
-    public void shouldFindByAuthorsLastNameAndFirstName(){
+    public void shouldFindByAuthorsLastNameAndFirstName() {
         //given
         book().withTitle("Psy").withAuthor("Jan", "Nowak").create();
         book().withTitle("Koty").withAuthor("Janina", "Nowak").create();
@@ -136,32 +136,32 @@ public class BookFinderTest extends AcceptanceTest {
         private Collection<Author> authors;
         private List<Consumer<Book>> consumers = new LinkedList<>();
 
-        BookBuilder withTitle(String title){
+        BookBuilder withTitle(String title) {
             this.title = title;
             return this;
         }
 
-        BookBuilder withIsbn(String isbn){
+        BookBuilder withIsbn(String isbn) {
             this.isbn = isbn;
             return this;
         }
 
-        BookBuilder withDate(String date){
+        BookBuilder withDate(String date) {
             this.publishedAt = date;
             return this;
         }
 
-        BookBuilder withGenre(String genreName){
-           consumers.add(book -> book.assignGenre(new Genre(genreName)));
+        BookBuilder withGenre(String genreName) {
+            consumers.add(book -> book.assignGenre(new Genre(genreName)));
             return this;
         }
 
-        BookBuilder withAuthor(String firstName, String lastName){
+        BookBuilder withAuthor(String firstName, String lastName) {
             consumers.add(book -> book.assignAuthor(new Author(firstName, lastName)));
             return this;
         }
 
-        Book create(){
+        Book create() {
             Book book = new Book(title, isbn, LocalDate.parse(publishedAt));
             consumers.forEach(c -> c.accept(book));
             tt.execute((c) -> {
@@ -169,7 +169,7 @@ public class BookFinderTest extends AcceptanceTest {
                 return null;
             });
             return book;
-            }
+        }
     }
 
     private BookBuilder book() {
